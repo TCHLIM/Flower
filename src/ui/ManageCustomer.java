@@ -29,7 +29,7 @@ public class ManageCustomer {
             //System.out.println("3 - Update customer Info");
             //System.out.println("4 - Delete customer Info");
             System.out.println("5 - exit");
-            //System.out.println("Enter the number to proceed");//menu selection
+            System.out.println("Enter the number to proceed");//menu selection
             
             try{
                 userSelection = 0;
@@ -38,22 +38,22 @@ public class ManageCustomer {
                 userSelection = 0;
             }
             
-                switch(userSelection){
-                    case 1 : addCustomer();break;
-                    case 2 : retrieveCustomer();break;
-                    case 3 : updateCustomer();break;
-                    case 4 : deleteCustomer();break;
-                    case 5 : ;break;
-                    default : System.out.println("Only enter a number between '1' to '5'");break;
-                }
+            switch(userSelection){
+                case 1 : addCustomer();break;
+                case 2 : retrieveCustomer();break;
+                case 3 : updateCustomer();break;
+                case 4 : deleteCustomer();break;
+                case 5 : ;break;
+                default : System.out.println("Only enter a number between '1' to '5'");break;
+            }
             
         }while(userSelection!=5);//loop back if user enter y
         
     }
     public void addCustomer(){
         System.out.println("Enter the customer details to add");
-        System.out.println("Customer ID: ");customer.setCustID( myScanner.nextLine());
-        
+        System.out.println("Customer ID: ");customer.setCustID(myScanner.next());
+        System.out.println();
         promptUserInput();
         //System.out.println(" ");
         listCust.add(customer);
@@ -73,13 +73,13 @@ public class ManageCustomer {
     public void promptUserInput(){
         boolean booGender = false;
         boolean booType = false;
-        System.out.println("Name: "); customer.setCustName( myScanner.nextLine()) ;
-        System.out.println("IC: ");customer.setCustIC(myScanner.nextLine());
-        System.out.println("Date Of Birth: ");customer.setCustDOB(myScanner.nextLine());
-        System.out.println("H/P: ");customer.setCustPhone(myScanner.nextLine());
+        System.out.println("Name: "); customer.setCustName( myScanner.next()) ;
+        System.out.println("IC: ");customer.setCustIC(myScanner.next());
+        System.out.println("Date Of Birth: ");customer.setCustDOB(myScanner.next());
+        System.out.println("H/P: ");customer.setCustPhone(myScanner.next());
         while(booGender == false){
             System.out.println("Gender: '1' for Male & '2' for Female");
-            String selectGender = myScanner.nextLine();
+            String selectGender = myScanner.next();
             if("1".equals(selectGender)){
                 customer.setCustGender("Male");
                 booGender = true;
@@ -94,7 +94,7 @@ public class ManageCustomer {
         System.out.println("Address: ");
         while(booType == false){
             System.out.println("Type: '1' for coporate & '2' for consumer");
-            String selectType = myScanner.nextLine();
+            String selectType = myScanner.next();
             if("1".equals(selectType)){
                 customer.setCustType("coporate");
                 booType = true;

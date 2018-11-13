@@ -1,4 +1,4 @@
-package flower;
+package ui;
 
 public interface FlowerInterface {
     public void setFlower(String flowerName);
