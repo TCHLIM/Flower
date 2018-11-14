@@ -1,4 +1,4 @@
-package ui;
+package flower;
 
 
 public class Flower implements FlowerInterface{

@@ -1,4 +1,4 @@
-package ui;
+package flower;
 
 import java.util.Scanner;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package ui;
+package flower;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -10,7 +10,8 @@ public class FlowerCatalog {
     private FlowerInterface order1 = new Flower();
    
         
-public FlowerCatalog(){
+    @SuppressWarnings("empty-statement")
+    public FlowerCatalog(){
      
     ArrayList<String> catalog = new ArrayList<String>();
     ArrayList<Integer> price = new ArrayList<Integer>();
@@ -80,6 +81,8 @@ public FlowerCatalog(){
         ans = answer.nextLine();
     orderTracker.add(ans);
     
+    if(!  ans.equalsIgnoreCase("exit")){
+    
     System.out.println("How Many Flower Do You Wish To Order?:");
     ans2 = answer2.nextLine();
     
@@ -104,7 +107,15 @@ public FlowerCatalog(){
           }
      }
     
-    System.out.println("Where Do You Wish Your Order To Be Deliver?: ");
+    }
+    
+    }while(! ans.equalsIgnoreCase("exit"));
+    
+    
+    
+    System.out.println("Thank You Come Again");
+    
+   /* System.out.println("Where Do You Wish Your Order To Be Deliver?: ");
      ans3 = answer3.nextLine();
      order1.setAddress(ans3);
      String address = order1.getAddress();
@@ -117,11 +128,11 @@ public FlowerCatalog(){
          
      }else{
              addressList.add(address);
-        }
-     }
+        } 
      
-    }while(!ans.equalsIgnoreCase("exit") || !ans2.equalsIgnoreCase("exit"));
-    
+     
+    }*/
+
  
     
     for(int k=0; k<orders.size();k++){ 
