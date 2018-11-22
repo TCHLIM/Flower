@@ -11,7 +11,19 @@ package domain;
  */
 public class Consumer extends Customer {
     private String custName;
-
+    private String custIC;
+    private String custGender;
+    
+    public Consumer(){
+        
+    }
+    public Consumer(String custID,String custPhone, String custAddress,String custMode, String custName, String custIC,String custGender){
+        super();
+        this.custName=custName;
+        this.custIC=custIC;
+        this.custGender=custGender;
+    }
+    
     public void setCustName(String custName) {
         this.custName = custName;
     }
@@ -35,6 +47,5 @@ public class Consumer extends Customer {
     public String getCustGender() {
         return custGender;
     }
-    private String custIC;
-    private String custGender;
+    
 }

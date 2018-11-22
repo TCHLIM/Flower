@@ -10,10 +10,20 @@ package domain;
  * @author User
  */
 public class CorporateCustomer extends Customer{
-    private String ContractName;
+    private String contractName;
+    private double creditLimit;
 
+    public CorporateCustomer(){
+        
+    }
+    public CorporateCustomer(String custID,String custPhone, String custAddress,String custMode,String contractName, double creditLimit){
+        super();
+        this.contractName = contractName;
+        this.creditLimit=creditLimit;
+    }
+    
     public void setContractName(String ContractName) {
-        this.ContractName = ContractName;
+        this.contractName = contractName;
     }
 
     public void setCreditLimit(double creditLimit) {
@@ -21,11 +31,10 @@ public class CorporateCustomer extends Customer{
     }
 
     public String getContractName() {
-        return ContractName;
+        return contractName;
     }
 
     public double getCreditLimit() {
         return creditLimit;
     }
-    private double creditLimit;
 }

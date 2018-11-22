@@ -14,6 +14,14 @@ public abstract class Customer {
     private String custPhone;
     private String custAddress;
     private String custMode;
+
+    public void setCustMode(String custMode) {
+        this.custMode = custMode;
+    }
+
+    public String getCustMode() {
+        return custMode;
+    }
     
     public Customer(String custID,String custPhone,String custAddress, String[] custMode){
         this.custID=custID;
