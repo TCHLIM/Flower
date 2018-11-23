@@ -17,7 +17,7 @@ public class CustomerMaintenance {
     private CorporateCustomer corporateCustomer;
     private ArrayList<Consumer> consumerList = new ArrayList<>();
     private ArrayList<CorporateCustomer> corCustList = new ArrayList<>();
-    
+    private boolean validation = true;
     
     public CustomerMaintenance(){
         consumer = new Consumer();
@@ -25,21 +25,25 @@ public class CustomerMaintenance {
         consumer=null;
         corporateCustomer = null;
     }
-    
-    //Consumer function
-    public void addConsumerDA(Consumer consumer){
-        consumerList.add(consumer);
+    public void checkExisting(){
         boolean add = false;
         int i = 0;
-        while(add==false||consumerList.size()>=i){
+        while(add==false&&consumerList.size()>i){
             if(consumerList.get(i).getCustIC().equals(consumer.getCustIC())&&"!DELETED".equals(consumerList.get(i).getCustMode())){
                 add = true;
-                System.out.println("existing record. Cannot add\n" + "custID = " + consumerList.get(i).getCustID());
+                validation = false;
             }else{
                 add=false;
                 i++;
             }//end if
         }
+    }
+    public boolean getValidation(){
+        return validation;
+    }
+    //Consumer function
+    public void addConsumerDA(Consumer consumer){
+        
     }
     public Consumer searchConsumerDA(String custID){
         boolean search = false;

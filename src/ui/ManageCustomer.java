@@ -42,18 +42,17 @@ public class ManageCustomer {
             System.out.println("3 - Search customer Info");
             System.out.println("4 - Update customer Info");
             System.out.println("5 - Delete customer Info");
-            System.out.println("6 - select customer type");
             
             System.out.println("Enter the number to proceed");//menu selection
             
             userSelection = myScanner.next();
             switch(userSelection){
                 case "0" : exit(-1);break;
-                case "1" : addCustomer();break;
-                case "2" : retrieveCustomer();break;
-                case "3" : updateCustomer();break;
-                case "4" : deleteCustomer();break;
-                case "5" : custTypeMenu();break;
+                case "1"  : custTypeMenu();break;
+                case "2" : addCustomer();break;
+                case "3" : retrieveCustomer();break;
+                case "4" : updateCustomer();break;
+                case "5" : deleteCustomer();break;
                 default : System.out.println("Only enter a number between '0' to '5'");break;
             }
             
@@ -79,27 +78,40 @@ public class ManageCustomer {
         System.out.println("");
         do{
             for(int i=0;i<consumerAtt.length;i++){
-                System.out.println(i);
                 if("1".equals(custType)){
+                   System.out.println(consumerAtt[i]);
                    switch(i){
                         case 0:consumer.setCustID(myScanner.next());break;
                         case 1:consumer.setCustName(myScanner.next());break;
-                        case 2:String custIC=myScanner.next();
-                            int j=0;
-                            boolean x=true;
-                            while(j<custIC.length()||Character.isDigit(custIC.charAt(j))){j++;x=false;}
-
-                            while(custIC.length()!=12||x==false){
-                                while(j<custIC.length()||Character.isDigit(custIC.charAt(j))){j++;x=false;}
-                                System.out.println("IC must be 12 digit");
-                                System.out.println(consumerAtt[i]);
-                                custIC=myScanner.next();
-                            }
+                        case 2:String custIC=myScanner.next();boolean x=true;
+                            do{
+                                if(CM.getValidation()==true){
+                                    int j=0;x=true;
+                                    if(custIC.length()==12){
+                                        while(j<custIC.length()){
+                                            if(!Character.isDigit(custIC.charAt(j))){
+                                                x=false;
+                                                j=custIC.length();
+                                            }//end if
+                                            j++;
+                                        }//while
+                                    }else{x=false;}
+                                    if(x==false){
+                                        System.out.println("Ic only in 12 digits");
+                                        System.out.println(consumerAtt[i]);
+                                        custIC=myScanner.next();
+                                    }
+                                }else{
+                                    System.out.println("existing record. Cannot be added");
+                                    x=false;
+                                }
+                            }while(x==false);
+                                
+                        break;
                             
-                            consumer.setCustIC(myScanner.next());break;
                         case 3:String gender=" ";
                                 String custGender = myScanner.next();
-                                while(!"1".equals(gender)&&!"2".equals(gender)){
+                                while(!"1".equals(gender)||!"2".equals(gender)){
                                     System.out.println("Only enter '1' for male or '2' for female");
                                     System.out.println(consumerAtt[i]);
                                     custGender = myScanner.next();
@@ -116,6 +128,8 @@ public class ManageCustomer {
                         
                 }
             }
+            System.out.println("Continue?Y/N");
+            userReply=myScanner.next();
         }while("Y".equals(Character.toUpperCase(userReply.charAt(0))));
     }
     public void retrieveCustomer(){
