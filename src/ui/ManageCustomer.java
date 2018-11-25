@@ -24,7 +24,7 @@ public class ManageCustomer {
     Consumer consumer = new Consumer();
     CorporateCustomer corCust = new CorporateCustomer();
     private String custType;
-    private String[] consumerAtt={"ID: ", "Name: ","IC: ","Gender: ","Phone: ","Address: "};
+    private String[] consumerAtt={"ID: ", "Name: ","IC: ","Gender: [1-Male, 2-Female] ","Phone: ","Address: "};
     private String[] corCustAtt={"ID: ","Contract Name: ","Phone: ","Address: ","Credit Limit: "};
     public ManageCustomer(){
         custTypeMenu();
@@ -48,8 +48,12 @@ public class ManageCustomer {
             userSelection = myScanner.next();
             switch(userSelection){
                 case "0" : exit(-1);break;
-                case "1"  : custTypeMenu();break;
-                case "2" : addCustomer();break;
+                case "1" :custTypeMenu();break;
+                case "2" :if("1".equals(custType)){addConsumer();
+                          }else{
+                            addCorCust();
+                        }
+                    break;
                 case "3" : retrieveCustomer();break;
                 case "4" : updateCustomer();break;
                 case "5" : deleteCustomer();break;
@@ -72,13 +76,12 @@ public class ManageCustomer {
         }while(!"1".equals(custType)&&!"2".equals(custType)&&!"5".equals(custType));
         
     }
-    public void addCustomer(){
+    public void addConsumer(){
         //CM.addConsumerDA(consumer);
         String userReply = " ";
         System.out.println("");
         do{
-            for(int i=0;i<consumerAtt.length;i++){
-                if("1".equals(custType)){
+            for(int i=0;i<consumerAtt.length;i++){            
                    System.out.println(consumerAtt[i]);
                    switch(i){
                         case 0:consumer.setCustID(myScanner.next());break;
@@ -109,9 +112,9 @@ public class ManageCustomer {
                                 
                         break;
                             
-                        case 3:String gender=" ";
+                        case 3:
                                 String custGender = myScanner.next();
-                                while(!"1".equals(gender)||!"2".equals(gender)){
+                                while(!"1".equals(custGender)&&!"2".equals(custGender)){
                                     System.out.println("Only enter '1' for male or '2' for female");
                                     System.out.println(consumerAtt[i]);
                                     custGender = myScanner.next();
@@ -121,40 +124,79 @@ public class ManageCustomer {
                                     case "2": consumer.setCustGender("FEMALE");break;
                                 }
                             ;break;
-                        case 4:consumer.setCustPhone(myScanner.next());break;
+                        case 4: x = true;
+                            String custPhone = myScanner.next();
+                            do{
+                                int j=0;
+                                while(custPhone.length()<=j){
+                                    if(!Character.isDigit(custPhone.charAt(j))){
+                                        System.out.println("Please enter the valid phone number.");
+                                        x=false;
+                                        j=custPhone.length();
+                                    }
+                                    else{
+                                        x=true;
+                                        j++;
+                                    }
+                                }
+                            }while(x==false);
+                            break;
                         case 5:consumer.setCustAddress(myScanner.next());break;
-                    } 
-                }else{
-                        
-                }
-            }
-            System.out.println("Continue?Y/N");
+                    }//end switch 
+            }//end for
+            System.out.println("Continue to add consumer?Y/N");
             userReply=myScanner.next();
-        }while("Y".equals(Character.toUpperCase(userReply.charAt(0))));
+        }while('Y'==Character.toUpperCase(userReply.charAt(0)));
     }
     public void retrieveCustomer(){
         String userReply = " ";
         System.out.println("");
         do{
             
-        }while("Y".equals(Character.toUpperCase(userReply.charAt(0))));
+        }while('Y'==Character.toUpperCase(userReply.charAt(0)));;
     }
     public void updateCustomer(){
         String userReply = " ";
         System.out.println("");
         do{
             
-        }while("Y".equals(Character.toUpperCase(userReply.charAt(0))));
+        }while('Y'==Character.toUpperCase(userReply.charAt(0)));;
     }
     public void deleteCustomer(){
         String userReply = " ";
         System.out.println("");
         do{
             
-        }while("Y".equals(Character.toUpperCase(userReply.charAt(0))));
+        }while('Y'==Character.toUpperCase(userReply.charAt(0)));;
     }
-    public void promptUserInput(){
-        
+    public void addCorCust(){
+        String userReply = " ";
+        System.out.println("");
+        do{
+            
+        }while('Y'==Character.toUpperCase(userReply.charAt(0)));;
     }
+    public void retrieveCorCust(){
+        String userReply = " ";
+        System.out.println("");
+        do{
+            
+        }while('Y'==Character.toUpperCase(userReply.charAt(0)));;
+    }
+    public void deleteCorCust(){
+        String userReply = " ";
+        System.out.println("");
+        do{
+            
+        }while('Y'==Character.toUpperCase(userReply.charAt(0)));;
+    }
+    public void searchCorCust(){
+        String userReply = " ";
+        System.out.println("");
+        do{
+            
+        }while('Y'==Character.toUpperCase(userReply.charAt(0)));;
+    }
+    
     
 }
