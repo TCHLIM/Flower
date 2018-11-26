@@ -13,37 +13,36 @@ import java.util.ArrayList;
  * @author User
  */
 public class CustomerMaintenance {
-    private Consumer consumer;
-    private CorporateCustomer corporateCustomer;
+    private Consumer consumer= new Consumer();
+    private CorporateCustomer corporateCustomer= new CorporateCustomer();
     private ArrayList<Consumer> consumerList = new ArrayList<>();
     private ArrayList<CorporateCustomer> corCustList = new ArrayList<>();
     private boolean validation = true;
-    
+
     public CustomerMaintenance(){
-        consumer = new Consumer();
-        corporateCustomer = new CorporateCustomer();
-        consumer=null;
-        corporateCustomer = null;
+        
     }
-    public void checkExisting(){
-        boolean add = false;
+    private String id;
+    public String returnCustID(){
+        return id;
+    }
+    public boolean checkConsumerAdd(String custIC){
         int i = 0;
-        while(add==false&&consumerList.size()>i){
-            if(consumerList.get(i).getCustIC().equals(consumer.getCustIC())&&"!DELETED".equals(consumerList.get(i).getCustMode())){
-                add = true;
-                validation = false;
+        while(consumerList.size()>i){
+            if(custIC.equals(consumerList.get(i).getCustIC())&&!"DELETED".equals(consumerList.get(i).getCustMode())){
+                validation = false;id=consumerList.get(i).getCustID();
+                i=consumerList.size();
+                
             }else{
-                add=false;
                 i++;
             }//end if
-        }
+        }return validation;
+        
     }
-    public boolean getValidation(){
-        return validation;
-    }
+    
     //Consumer function
     public void addConsumerDA(Consumer consumer){
-        
+        consumerList.add(consumer);
     }
     public Consumer searchConsumerDA(String custID){
         boolean search = false;

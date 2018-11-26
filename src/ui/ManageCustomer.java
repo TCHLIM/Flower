@@ -28,20 +28,22 @@ public class ManageCustomer {
     private String[] corCustAtt={"ID: ","Contract Name: ","Phone: ","Address: ","Credit Limit: "};
     public ManageCustomer(){
         custTypeMenu();
-        functionMenu();
-        
-        
-    }
-    
+        functionMenu();      
+    }    
     public void functionMenu(){
         String userSelection = " ";
         do{//prompt user to enter the menu number
+            if("1".equals(custType)){
+                System.out.println("uare now in 'consumer' mode");
+            }else{
+                System.out.println("you are now in 'corporate customer' mode");
+            }
             System.out.println("0 - exit");
             System.out.println("1 - select customer type");
             System.out.println("2 - Add new customer");
             System.out.println("3 - Search customer Info");
             System.out.println("4 - Update customer Info");
-            System.out.println("5 - Delete customer Info");
+            System.out.println("5 - Delete customer Info\n");
             
             System.out.println("Enter the number to proceed");//menu selection
             
@@ -87,8 +89,8 @@ public class ManageCustomer {
                         case 0:consumer.setCustID(myScanner.next());break;
                         case 1:consumer.setCustName(myScanner.next());break;
                         case 2:String custIC=myScanner.next();boolean x=true;
-                            do{
-                                if(CM.getValidation()==true){
+                            if(CM.checkConsumerAdd(custIC)==true){    
+                                do{
                                     int j=0;x=true;
                                     if(custIC.length()==12){
                                         while(j<custIC.length()){
@@ -104,12 +106,14 @@ public class ManageCustomer {
                                         System.out.println(consumerAtt[i]);
                                         custIC=myScanner.next();
                                     }
-                                }else{
-                                    System.out.println("existing record. Cannot be added");
-                                    x=false;
-                                }
-                            }while(x==false);
                                 
+                                }while(x==false);
+                                consumer.setCustIC(custIC);
+                            }else{
+                                    System.out.println("existing record. Cannot be added");
+                                    System.out.println("CustomerID : " + CM.returnCustID());
+                                    functionMenu();
+                                }
                         break;
                             
                         case 3:
@@ -140,10 +144,15 @@ public class ManageCustomer {
                                     }
                                 }
                             }while(x==false);
+                            consumer.setCustPhone(custPhone);
                             break;
                         case 5:consumer.setCustAddress(myScanner.next());break;
-                    }//end switch 
+                    }//end switch
+                   consumer.setCustMode("EXISTING");
+                   
             }//end for
+            CM.addConsumerDA(consumer);
+            System.out.println("efewfewfewff1e4134              "+consumer.getCustIC());
             System.out.println("Continue to add consumer?Y/N");
             userReply=myScanner.next();
         }while('Y'==Character.toUpperCase(userReply.charAt(0)));
@@ -152,7 +161,7 @@ public class ManageCustomer {
         String userReply = " ";
         System.out.println("");
         do{
-            
+            System.out.println("Please enter the consumer ID");
         }while('Y'==Character.toUpperCase(userReply.charAt(0)));;
     }
     public void updateCustomer(){
@@ -173,7 +182,52 @@ public class ManageCustomer {
         String userReply = " ";
         System.out.println("");
         do{
-            
+           for(int i=0;i<corCustAtt.length;i++){            
+                   System.out.println(corCustAtt[i]);
+                   switch(i){
+                       
+                        case 0:corCust.setCustID(myScanner.next());break;
+                        case 1:corCust.setContractName(myScanner.next());break;
+                        case 2: boolean x = true;
+                            String corCustPhone = myScanner.next();
+                            do{
+                                int j=0;
+                                while(corCustPhone.length()<=j){
+                                    if(!Character.isDigit(corCustPhone.charAt(j))){
+                                        System.out.println("Please enter the valid phone number.");
+                                        x=false;
+                                        j=corCustPhone.length();
+                                    }
+                                    else{
+                                        x=true;
+                                        j++;
+                                    }
+                                }
+                            }while(x==false);
+                            break;
+                        case 3:corCust.setCustAddress(myScanner.next());break;
+                        case 4: String creditLimit=" ";
+                            creditLimit=myScanner.next();
+                            do{
+                                int j=0;x =true;
+                                while(creditLimit.length()>j){
+                                    if(Character.isDigit(creditLimit.charAt(j))||creditLimit.charAt(j)=='.'){
+                                        j++;x=true;
+                                    }else{
+                                        j=creditLimit.length();x=false;
+                                        System.out.println("enter Credit limit in digit");
+                                        System.out.println(corCustAtt[i]);
+                                        creditLimit=myScanner.next();
+                                    }
+
+                                }
+                            }while(x==false); 
+                        break;
+                            
+                    }//end switch 
+            }//end for
+            System.out.println("Continue to add corporate Customer?Y/N");
+            userReply=myScanner.next(); 
         }while('Y'==Character.toUpperCase(userReply.charAt(0)));;
     }
     public void retrieveCorCust(){
