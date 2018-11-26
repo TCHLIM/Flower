@@ -22,6 +22,9 @@ public class CustomerMaintenance {
     public CustomerMaintenance(){
         
     }
+    public boolean getValidation(){
+        return validation;
+    }
     private String id;
     public String returnCustID(){
         return id;
@@ -47,18 +50,18 @@ public class CustomerMaintenance {
     public Consumer searchConsumerDA(String custID){
         boolean search = false;
         int i = 0;
-        while(search==false||consumerList.size()>=i){
-            if(consumerList.get(i).getCustID().equals(custID)&&"!DELETED".equals(consumerList.get(i).getCustMode())){
+        while(search==false||consumerList.size()>i){
+            if(custID.equals(consumerList.get(i).getCustID())&&!"DELETED".equals(consumerList.get(i).getCustMode())){
                 search = true;
+                validation=true;
+                consumer=consumerList.get(i);
             }else{
+                validation=false;
                 search=false;
                 i++;
             }//end if
         }//end while
-        if(search==false){
-            System.out.println("No such Record!");
-        }//end if
-        return consumerList.get(i);
+        return consumer;
     }
     public void deleteConsumerDA(String custID){
         boolean delete = false;
@@ -103,5 +106,22 @@ public class CustomerMaintenance {
     }
     
     //Corporate Customer function
-    
+    public void addCorCustDA(CorporateCustomer c){
+        corCustList.add(c);
+    }
+    public CorporateCustomer searchCorCustDA(String custID){
+        boolean search = false;
+        int i = 0;
+        while(search==false||corCustList.size()>=i){
+            if(corCustList.get(i).getCustID().equals(custID)&&"!DELETED".equals(corCustList.get(i).getCustMode())){
+                search = true;
+                validation=true;
+            }else{
+                validation=false;
+                search=false;
+                i++;
+            }//end if
+        }//end while
+        return corCustList.get(i);
+    }
 }

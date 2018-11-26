@@ -34,7 +34,7 @@ public class ManageCustomer {
         String userSelection = " ";
         do{//prompt user to enter the menu number
             if("1".equals(custType)){
-                System.out.println("uare now in 'consumer' mode");
+                System.out.println("u are now in 'consumer' mode");
             }else{
                 System.out.println("you are now in 'corporate customer' mode");
             }
@@ -56,7 +56,11 @@ public class ManageCustomer {
                             addCorCust();
                         }
                     break;
-                case "3" : retrieveCustomer();break;
+                case "3" :if("1".equals(custType)){retrieveConsumer();
+                          }else{
+                            retrieveCorCust();
+                        }
+                    break;
                 case "4" : updateCustomer();break;
                 case "5" : deleteCustomer();break;
                 default : System.out.println("Only enter a number between '0' to '5'");break;
@@ -111,7 +115,7 @@ public class ManageCustomer {
                                 consumer.setCustIC(custIC);
                             }else{
                                     System.out.println("existing record. Cannot be added");
-                                    System.out.println("CustomerID : " + CM.returnCustID());
+                                    System.out.println("consumer ID : "+CM.returnCustID());
                                     functionMenu();
                                 }
                         break;
@@ -148,21 +152,33 @@ public class ManageCustomer {
                             break;
                         case 5:consumer.setCustAddress(myScanner.next());break;
                     }//end switch
-                   consumer.setCustMode("EXISTING");
-                   
             }//end for
+            consumer.setCustMode("EXISTING");
             CM.addConsumerDA(consumer);
-            System.out.println("efewfewfewff1e4134              "+consumer.getCustIC());
             System.out.println("Continue to add consumer?Y/N");
             userReply=myScanner.next();
         }while('Y'==Character.toUpperCase(userReply.charAt(0)));
     }
-    public void retrieveCustomer(){
+    public void retrieveConsumer(){
         String userReply = " ";
         System.out.println("");
         do{
             System.out.println("Please enter the consumer ID");
-        }while('Y'==Character.toUpperCase(userReply.charAt(0)));;
+            String custID=myScanner.next();
+            consumer=CM.searchConsumerDA(custID);
+            System.out.println(" ");
+            if(CM.getValidation()==false){
+                System.out.println("No such record!");
+            }else{
+                System.out.println(consumerAtt[0]+" : " + consumer.getCustID());
+                System.out.println(consumerAtt[1]+" : " + consumer.getCustName());
+                System.out.println(consumerAtt[2]+" : " + consumer.getCustIC());
+                System.out.println(consumerAtt[3]+" : " + consumer.getCustGender());
+                System.out.println(consumerAtt[4]+" : " + consumer.getCustPhone());
+                System.out.println(consumerAtt[5]+" : " + consumer.getCustAddress());
+            }
+            System.out.println("Continue to search?Y/N");
+        }while('Y'==Character.toUpperCase(userReply.charAt(0)));
     }
     public void updateCustomer(){
         String userReply = " ";
@@ -220,12 +236,14 @@ public class ManageCustomer {
                                         creditLimit=myScanner.next();
                                     }
 
-                                }
+                                }corCust.setCreditLimit(Integer.parseInt(creditLimit));
                             }while(x==false); 
+                            
                         break;
                             
                     }//end switch 
             }//end for
+           
             System.out.println("Continue to add corporate Customer?Y/N");
             userReply=myScanner.next(); 
         }while('Y'==Character.toUpperCase(userReply.charAt(0)));;
