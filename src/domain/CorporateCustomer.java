@@ -22,7 +22,7 @@ public class CorporateCustomer extends Customer{
         this.creditLimit=creditLimit;
     }
     
-    public void setContractName(String ContractName) {
+    public void setContractName(String contractName) {
         this.contractName = contractName;
     }
 

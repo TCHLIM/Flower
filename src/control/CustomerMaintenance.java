@@ -48,19 +48,13 @@ public class CustomerMaintenance {
         consumerList.add(consumer);
     }
     public Consumer searchConsumerDA(String custID){
-        boolean search = false;
         int i = 0;
-        while(search==false||consumerList.size()>i){
+        while(consumerList.size()>i){
             if(custID.equals(consumerList.get(i).getCustID())&&!"DELETED".equals(consumerList.get(i).getCustMode())){
-                search = true;
-                validation=true;
                 consumer=consumerList.get(i);
-            }else{
-                //consumer=null;
-                validation=false;
-                search=false;
-                i++;
+                i=consumerList.size();
             }//end if
+            i++;
         }//end while
         return consumer;
     }
@@ -111,18 +105,15 @@ public class CustomerMaintenance {
         corCustList.add(c);
     }
     public CorporateCustomer searchCorCustDA(String custID){
-        boolean search = false;
         int i = 0;
-        while(search==false||corCustList.size()>=i){
-            if(corCustList.get(i).getCustID().equals(custID)&&"!DELETED".equals(corCustList.get(i).getCustMode())){
-                search = true;
-                validation=true;
-            }else{
-                validation=false;
-                search=false;
-                i++;
+        while(corCustList.size()>i){
+            if(custID.equals(corCustList.get(i).getCustID())&&!"DELETED".equals(corCustList.get(i).getCustMode())){
+                corporateCustomer=corCustList.get(i);
+                i=corCustList.size();
             }//end if
+            i++;
         }//end while
-        return corCustList.get(i);
+        return corporateCustomer;
+    
     }
 }

@@ -20,9 +20,9 @@ import java.util.List;
 public class ManageCustomer {
     
     Scanner myScanner = new Scanner(System.in);
-    CustomerMaintenance CM = new CustomerMaintenance();
-    Consumer consumer = new Consumer();
-    CorporateCustomer corCust = new CorporateCustomer();
+    CustomerMaintenance CM=new CustomerMaintenance();
+    Consumer consumer;
+    CorporateCustomer corCust;
     private String custType;
     private String[] consumerAtt={"ID: ", "Name: ","IC: ","Gender: [1-Male, 2-Female] ","Phone: ","Address: "};
     private String[] corCustAtt={"ID: ","Contract Name: ","Phone: ","Address: ","Credit Limit: "};
@@ -33,11 +33,13 @@ public class ManageCustomer {
     public void functionMenu(){
         String userSelection = " ";
         do{//prompt user to enter the menu number
+            consumer = new Consumer();corCust=new CorporateCustomer();
+            System.out.println("##############################################################");
             if("1".equals(custType)){
                 System.out.println("u are now in 'consumer' mode");
             }else{
                 System.out.println("you are now in 'corporate customer' mode");
-            }
+            }System.out.println("##############################################################");
             System.out.println("0 - exit");
             System.out.println("1 - select customer type");
             System.out.println("2 - Add new customer");
@@ -48,6 +50,7 @@ public class ManageCustomer {
             System.out.println("Enter the number to proceed");//menu selection
             
             userSelection = myScanner.next();
+            System.out.println("##############################################################");
             switch(userSelection){
                 case "0" : exit(-1);break;
                 case "1" :custTypeMenu();break;
@@ -73,12 +76,13 @@ public class ManageCustomer {
         
         do{
             custType = " ";
+            System.out.println("##############################################################");
             System.out.println("Select which customer type u want to maintain.");
             System.out.println("1 - consumer");
             System.out.println("2 - corporate customer");
             System.out.println("5 - exit");
             custType = myScanner.next();
-            
+            System.out.println("##############################################################");
         }while(!"1".equals(custType)&&!"2".equals(custType)&&!"5".equals(custType));
         
     }
@@ -132,20 +136,17 @@ public class ManageCustomer {
                                     case "2": consumer.setCustGender("FEMALE");break;
                                 }
                             ;break;
-                        case 4: x = true;
-                            String custPhone = myScanner.next();
+                        case 4:String custPhone;
                             do{
-                                int j=0;
-                                while(custPhone.length()<=j){
+                                custPhone = myScanner.next();
+                                int j=0; x = true;
+                                while(custPhone.length()>j){
                                     if(!Character.isDigit(custPhone.charAt(j))){
-                                        System.out.println("Please enter the valid phone number.");
+                                        System.out.println("Please enter the valid phone number:");
                                         x=false;
                                         j=custPhone.length();
                                     }
-                                    else{
-                                        x=true;
-                                        j++;
-                                    }
+                                    j++;
                                 }
                             }while(x==false);
                             consumer.setCustPhone(custPhone);
@@ -165,17 +166,17 @@ public class ManageCustomer {
         do{
             System.out.println("Please enter the consumer ID");
             String custID=myScanner.next();
-            try{consumer=CM.searchConsumerDA(custID);}catch(Exception ex){}
-            System.out.println(" "+CM.getValidation());
-            if(CM.getValidation()==false){
-                System.out.println("No such record!");
-            }else{
+            consumer=CM.searchConsumerDA(custID);
+            if(consumer.getCustID()!=null){
+                
                 System.out.println(consumerAtt[0]+" : " + consumer.getCustID());
                 System.out.println(consumerAtt[1]+" : " + consumer.getCustName());
                 System.out.println(consumerAtt[2]+" : " + consumer.getCustIC());
-                System.out.println(""+" : " + consumer.getCustGender());
+                System.out.println("Gender: "+" : " + consumer.getCustGender());
                 System.out.println(consumerAtt[4]+" : " + consumer.getCustPhone());
                 System.out.println(consumerAtt[5]+" : " + consumer.getCustAddress());
+            }else{
+                System.out.println("No such record!");
             }
             System.out.println("Continue to search?Y/N");
             userReply=myScanner.next();
@@ -205,22 +206,20 @@ public class ManageCustomer {
                        
                         case 0:corCust.setCustID(myScanner.next());break;
                         case 1:corCust.setContractName(myScanner.next());break;
-                        case 2: boolean x = true;
-                            String corCustPhone = myScanner.next();
+                        case 2:String custPhone;boolean x;
                             do{
-                                int j=0;
-                                while(corCustPhone.length()<=j){
-                                    if(!Character.isDigit(corCustPhone.charAt(j))){
-                                        System.out.println("Please enter the valid phone number.");
+                                custPhone = myScanner.next();
+                                int j=0;x = true;
+                                while(custPhone.length()>j){
+                                    if(!Character.isDigit(custPhone.charAt(j))){
+                                        System.out.println("Please enter the valid phone number:");
                                         x=false;
-                                        j=corCustPhone.length();
+                                        j=custPhone.length();
                                     }
-                                    else{
-                                        x=true;
-                                        j++;
-                                    }
+                                    j++;
                                 }
                             }while(x==false);
+                            corCust.setCustPhone(custPhone);
                             break;
                         case 3:corCust.setCustAddress(myScanner.next());break;
                         case 4: String creditLimit=" ";
@@ -237,13 +236,15 @@ public class ManageCustomer {
                                         creditLimit=myScanner.next();
                                     }
 
-                                }corCust.setCreditLimit(Integer.parseInt(creditLimit));
-                            }while(x==false); 
+                                }
+                            }while(x==false);corCust.setCreditLimit(Double.parseDouble(creditLimit)); 
                             
                         break;
                             
                     }//end switch 
             }//end for
+           corCust.setCustMode("EXISTING");
+           CM.addCorCustDA(corCust);
            
             System.out.println("Continue to add corporate Customer?Y/N");
             userReply=myScanner.next(); 
@@ -253,8 +254,22 @@ public class ManageCustomer {
         String userReply = " ";
         System.out.println("");
         do{
-            
-        }while('Y'==Character.toUpperCase(userReply.charAt(0)));;
+            System.out.println("Please enter the corCust ID");
+            String custID=myScanner.next();
+            corCust=CM.searchCorCustDA(custID);
+            if(corCust.getCustID()!=null){
+                
+                System.out.println(corCustAtt[0]+" : " + corCust.getCustID());
+                System.out.println(corCustAtt[1]+" : " + corCust.getContractName());
+                System.out.println(corCustAtt[2]+" : " + corCust.getCustPhone());
+                System.out.println(corCustAtt[3]+" : " + corCust.getCustAddress());
+                System.out.println(corCustAtt[4]+" : " + corCust.getCreditLimit());
+            }else{
+                System.out.println("No such record!");
+            }
+            System.out.println("Continue to search?Y/N");
+            userReply=myScanner.next();
+        }while('Y'==Character.toUpperCase(userReply.charAt(0)));
     }
     public void deleteCorCust(){
         String userReply = " ";
