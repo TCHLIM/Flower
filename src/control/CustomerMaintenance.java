@@ -56,6 +56,7 @@ public class CustomerMaintenance {
                 validation=true;
                 consumer=consumerList.get(i);
             }else{
+                //consumer=null;
                 validation=false;
                 search=false;
                 i++;

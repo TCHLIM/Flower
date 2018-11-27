@@ -165,19 +165,20 @@ public class ManageCustomer {
         do{
             System.out.println("Please enter the consumer ID");
             String custID=myScanner.next();
-            consumer=CM.searchConsumerDA(custID);
-            System.out.println(" ");
+            try{consumer=CM.searchConsumerDA(custID);}catch(Exception ex){}
+            System.out.println(" "+CM.getValidation());
             if(CM.getValidation()==false){
                 System.out.println("No such record!");
             }else{
                 System.out.println(consumerAtt[0]+" : " + consumer.getCustID());
                 System.out.println(consumerAtt[1]+" : " + consumer.getCustName());
                 System.out.println(consumerAtt[2]+" : " + consumer.getCustIC());
-                System.out.println(consumerAtt[3]+" : " + consumer.getCustGender());
+                System.out.println(""+" : " + consumer.getCustGender());
                 System.out.println(consumerAtt[4]+" : " + consumer.getCustPhone());
                 System.out.println(consumerAtt[5]+" : " + consumer.getCustAddress());
             }
             System.out.println("Continue to search?Y/N");
+            userReply=myScanner.next();
         }while('Y'==Character.toUpperCase(userReply.charAt(0)));
     }
     public void updateCustomer(){
