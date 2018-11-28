@@ -20,7 +20,10 @@ public class CustomerMaintenance {
     private boolean validation = true;
 
     public CustomerMaintenance(){
-        
+
+    }
+    public void clearAll(){
+        consumer= new Consumer();corporateCustomer= new CorporateCustomer();        
     }
     public boolean getValidation(){
         return validation;
@@ -30,6 +33,7 @@ public class CustomerMaintenance {
         return id;
     }
     public boolean checkConsumerAdd(String custIC){
+        clearAll();
         int i = 0;
         while(consumerList.size()>i){
             if(custIC.equals(consumerList.get(i).getCustIC())&&!"DELETED".equals(consumerList.get(i).getCustMode())){
@@ -48,6 +52,7 @@ public class CustomerMaintenance {
         consumerList.add(consumer);
     }
     public Consumer searchConsumerDA(String custID){
+        clearAll();
         int i = 0;
         while(consumerList.size()>i){
             if(custID.equals(consumerList.get(i).getCustID())&&!"DELETED".equals(consumerList.get(i).getCustMode())){
@@ -59,42 +64,29 @@ public class CustomerMaintenance {
         return consumer;
     }
     public void deleteConsumerDA(String custID){
-        boolean delete = false;
+        clearAll();
         int i = 0;
-        while(delete==false&&consumerList.size()>=i){
-            if(consumerList.get(i).getCustID().equals(custID)&&"!DELETED".equals(consumerList.get(i).getCustMode())){
-                delete = true;
-                consumerList.remove(i);
-            }else{
-                delete=false;
-                i++;
-            }//end if
+        while(consumerList.size()>i){
+            if(consumerList.get(i).getCustID().equals(custID)&&!"DELETED".equals(consumerList.get(i).getCustMode())){
+                consumerList.get(i).setCustMode("DELETED");
+                i=consumerList.size();
+            }i++;
         }//end while
-        if(delete==false){
-            System.out.println("No such Record!");
-        }//end if
     }
-    public Consumer updateConsumerDA(Consumer consumer){
-        boolean update = false;
+    public void updateConsumerDA(Consumer consumer){
         int i = 0;
-        while(update==false||consumerList.size()>=i){
-            if(consumerList.get(i).getCustID().equals(consumer.getCustID())&&"!DELETED".equals(consumerList.get(i).getCustMode())){
-                update = true;
+        while(consumerList.size()>i){
+            if(consumerList.get(i).getCustID().equals(consumer.getCustID())&&!"DELETED".equals(consumerList.get(i).getCustMode())){
                 consumerList.set(i, consumer);
-            }else{
-                update=false;
-                i++;
+                i=consumerList.size();
             }//end if
+                i++;
         }//end while
-        if(update==false){
-            System.out.println("No such Record!");
-        }//end if
-        return consumerList.get(i);
     }
-    public ArrayList<Consumer> getAllConsumer(){
+    public ArrayList<Consumer> getAllConsumer(){clearAll();
         int i=0;
         ArrayList<Consumer> copyArray = new ArrayList<>();
-        while(consumerList.size()<=i&&"!DELETED".equals(consumerList.get(i).getCustMode())){
+        while(consumerList.size()<=i&&!"DELETED".equals(consumerList.get(i).getCustMode())){
             copyArray.add(consumerList.get(i));
         }
         return copyArray;
@@ -104,7 +96,7 @@ public class CustomerMaintenance {
     public void addCorCustDA(CorporateCustomer c){
         corCustList.add(c);
     }
-    public CorporateCustomer searchCorCustDA(String custID){
+    public CorporateCustomer searchCorCustDA(String custID){clearAll();
         int i = 0;
         while(corCustList.size()>i){
             if(custID.equals(corCustList.get(i).getCustID())&&!"DELETED".equals(corCustList.get(i).getCustMode())){
@@ -115,5 +107,25 @@ public class CustomerMaintenance {
         }//end while
         return corporateCustomer;
     
+    }
+    public void updateCorCustDA(CorporateCustomer corCust){
+        int i = 0;
+        while(corCustList.size()>i){
+            if(corCustList.get(i).getCustID().equals(corCust.getCustID())&&!"DELETED".equals(corCustList.get(i).getCustMode())){
+                corCustList.set(i, corCust);
+                i=corCustList.size();
+            }//end if
+                i++;
+        }//end while
+    }
+    public void deleteCorCustDA(String custID){
+        clearAll();
+        int i = 0;
+        while(corCustList.size()>i){
+            if(corCustList.get(i).getCustID().equals(custID)&&!"DELETED".equals(corCustList.get(i).getCustMode())){
+                corCustList.get(i).setCustMode("DELETED");
+                i=corCustList.size();
+            }i++;
+        }//end while
     }
 }
