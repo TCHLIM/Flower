@@ -17,7 +17,7 @@ public class ManagePayment {
     public ManagePayment(){
         double totalPrice = 30.00;
         boolean playAgain = true;
-        double charge = 0;
+        double change = 0;
         
         while(playAgain){
             System.out.println("Payment");
@@ -28,9 +28,9 @@ public class ManagePayment {
             double paid = scanner.nextDouble();
          
             if(paid > totalPrice){
-               charge  = CountPayment(totalPrice, paid);
+               change  = CountPayment(totalPrice, paid);
                playAgain = false;
-               System.out.println("The total charge is RM " + charge);
+               System.out.println("The total charge is RM " + change);
                System.out.println("Thank You !!!");
             }
             else

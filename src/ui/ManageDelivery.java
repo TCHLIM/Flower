@@ -5,6 +5,7 @@
  */
 package ui;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class ManageDelivery {
     
@@ -13,8 +14,9 @@ public class ManageDelivery {
     public ManageDelivery(){
         PickupList pickuplist = new PickupList();
         DeliveryList deliverylist = new DeliveryList();
-        String action = "";
         
+        String action = "";
+   
         boolean playAgain = true;
 
         while(playAgain){

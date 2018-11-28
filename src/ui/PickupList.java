@@ -5,6 +5,7 @@
  */
 package ui;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -13,17 +14,19 @@ import java.util.Scanner;
  */
 public class PickupList {
     
-     Scanner scanner = new Scanner(System.in);
+      ArrayList<String> pickUpList = new ArrayList<String>();
     
     public void PickupList(){
         
-            System.out.println("Pickup List:");
-            System.out.println("1. Name : Mr.Ang");
-            System.out.println("2. Name : Samantha");
-            System.out.println("3. Name : Abu");
-            System.out.println("4. Name : Alex");
-            System.out.println("");
-
+           pickUpList.add("P1001            Chun Yi Goh               10:00AM ");
+           pickUpList.add("P1002            KING                           3:00PM ");
+           pickUpList.add("P1003            KONG                         4:00PM");
+           
+            for(int i = 0; i < pickUpList.size(); i++){
+                
+              System.out.println( pickUpList.get(i));
+               
+            }  
     }
    
 }
