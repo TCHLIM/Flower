@@ -1,7 +1,7 @@
 
 package ui;
 import ADT.ListInterface;
-import Domain.Flower;
+import domain.Flower;
 import java.util.Scanner;
 
 
