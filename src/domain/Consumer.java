@@ -17,11 +17,12 @@ public class Consumer extends Customer {
     public Consumer(){
         
     }
-    public Consumer(String custID,String custPhone, String custAddress,String custMode, String custName, String custIC,String custGender){
+    public Consumer(String custID,String custName, String custIC, String custGender, String custPhone, String custAddress,String custMode){
         super();
         this.custName=custName;
         this.custIC=custIC;
         this.custGender=custGender;
+        
     }
     
     public void setCustName(String custName) {
