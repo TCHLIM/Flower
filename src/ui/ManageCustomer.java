@@ -38,8 +38,8 @@ public class ManageCustomer {
         custType = myScanner.next();
         System.out.println("##############################################################");
         switch(custType){
-            case "1": custType = "CONSUMER";break;
-            case "2": custType="CORPORATE CUSTOMER";break;
+            case "1": custType = "CONSUMER";functionMenu();break;
+            case "2": custType="CORPORATE CUSTOMER";functionMenu();break;
             case "5":exit(-1);break;
             default:System.out.println("Only enter '1'-Consumer, '2'-Corporate Customer");
                     custTypeMenu();break;
@@ -256,6 +256,7 @@ public class ManageCustomer {
                 break;
                 case 4:String creditLimit;
                     do{creditLimit=myScanner.next();}while(CC.checkInputValidation("CreditLimit", creditLimit)==false);
+                    corCust.setCreditLimit(creditLimit);
                 break;
             }
             countPlace++;
@@ -302,12 +303,12 @@ public class ManageCustomer {
             System.out.println("1 - confirm update");
             System.out.println("2 - "+corCustAtt[1]+corCust.getContractName());
             System.out.println("3 - "+corCustAtt[2]+corCust.getCustPhone());
-            System.out.println("4 - "+corCustAtt[4]+corCust.getCustAddress());
+            System.out.println("4 - "+corCustAtt[3]+corCust.getCustAddress());
             System.out.println("5 - "+corCustAtt[4]+corCust.getCreditLimit());
             boolean checkSelection;
             do{
                 checkSelection=true;
-                System.out.println("Enter the number 0-6 to select function");
+                System.out.println("Enter the number 0-5 to select function");
                 String userSelection = myScanner.next();
                 switch(userSelection){
                     case "0":corCust=new CorCust();checkSelection=false;break;
@@ -321,8 +322,9 @@ public class ManageCustomer {
                     break;
                     case "5":String creditLimit;System.out.println(corCustAtt[4]);
                         do{creditLimit=myScanner.next();}while(CC.checkInputValidation("CreditLimit", creditLimit)==false);
+                        corCust.setCreditLimit(creditLimit);
                     break;
-                    default:checkSelection=false;System.out.println("Only number between 0 to 6 !!");break;
+                    default:checkSelection=false;System.out.println("Only number between 0 to 5 !!");break;
                 }
             }while(checkSelection==true);
         }

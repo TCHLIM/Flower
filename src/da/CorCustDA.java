@@ -44,6 +44,7 @@ public class CorCustDA {
             if(corCust.getCustID().equals(c.getCustID())){
                 corCustList.set(countPlace, c);
                 validation=true;
+                System.out.println("record updated...");
                 countPlace=corCustList.size();
             }else{validation = false;}
         }

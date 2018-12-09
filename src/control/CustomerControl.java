@@ -53,8 +53,7 @@ public class CustomerControl {
             case "CreditLimit" :  
                 int countDot=0;
                 while(countPlace<userInput.length()){
-                    if(userInput.charAt(countPlace)=='.'){countDot++;}
-                    countPlace++;//end if
+                    if(userInput.charAt(countPlace)=='.'){countDot++;}countPlace++;//end if
                 }countPlace=0;//end while
                 while(countPlace<userInput.length()){
                     if(!Character.isDigit(userInput.charAt(countPlace))&&countDot>1){
