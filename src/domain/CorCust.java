@@ -9,15 +9,15 @@ package domain;
  *
  * @author User
  */
-public class CorporateCustomer extends Customer{
+public class CorCust extends Customer{
     private String contractName;
-    private double creditLimit;
+    private String creditLimit;
 
-    public CorporateCustomer(){
-        
+    public CorCust(){
+
     }
-    public CorporateCustomer(String custID,String custPhone, String custAddress,String custMode,String contractName, double creditLimit){
-        super();
+    public CorCust(String custID,String contractName, String custPhone, String custAddress,String creditLimit,String custMode){
+        super(custID,custPhone,custAddress,custMode);
         this.contractName = contractName;
         this.creditLimit=creditLimit;
     }
@@ -26,7 +26,7 @@ public class CorporateCustomer extends Customer{
         this.contractName = contractName;
     }
 
-    public void setCreditLimit(double creditLimit) {
+    public void setCreditLimit(String creditLimit) {
         this.creditLimit = creditLimit;
     }
 
@@ -34,7 +34,7 @@ public class CorporateCustomer extends Customer{
         return contractName;
     }
 
-    public double getCreditLimit() {
+    public String getCreditLimit() {
         return creditLimit;
     }
 }

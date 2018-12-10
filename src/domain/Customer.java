@@ -9,7 +9,7 @@ package domain;
  *
  * @author jiach
  */
-public abstract class Customer {
+public class Customer {
     private String custID;
     private String custPhone;
     private String custAddress;
@@ -23,7 +23,7 @@ public abstract class Customer {
         return custMode;
     }
     
-    public Customer(String custID,String custPhone,String custAddress, String[] custMode){
+    public Customer(String custID,String custPhone,String custAddress, String custMode){
         this.custID=custID;
         this.custPhone=custPhone;
         this.custAddress=custAddress;
