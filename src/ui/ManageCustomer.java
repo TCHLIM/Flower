@@ -150,12 +150,12 @@ public class ManageCustomer {
         }
     }
     public void updateConsumer(){
-        String ID;Consumer c1;
+        String ID;Consumer c1 =new Consumer();
         System.out.println("Enter the consumer ID : ");
         ID=myScanner.next();
-        consumer=CC.searchConsumer(ID);
-        c1=new Consumer(consumer.getCustID(),consumer.getCustName(),consumer.getCustIC(),consumer.getCustGender(),
-        consumer.getCustPhone(),consumer.getCustGender(),consumer.getCustMode());
+        c1=CC.searchConsumer(ID);
+        consumer=new Consumer(c1.getCustID(),c1.getCustName(),c1.getCustIC(),c1.getCustGender(),c1.getCustPhone(),
+        c1.getCustAddress(),c1.getCustMode());
         if(CC.getValidation()==true){
             System.out.println("0 - cancel update");
             System.out.println("1 - confirm update");
@@ -170,7 +170,7 @@ public class ManageCustomer {
                 System.out.println("Enter the number 0-6 to select function");
                 String userSelection = myScanner.next();
                 switch(userSelection){
-                    case "0":System.out.println("update cancelled...");consumer=c1;checkSelection=false;break;
+                    case "0":System.out.println("update cancelled...");checkSelection=false;;break;
                     case "1":CC.updateConsumer(consumer);checkSelection=false;break;
                     case "2":System.out.println(consumerAtt[1]);consumer.setCustName(myScanner.next());break;
                     case "3":String IC;System.out.println(consumerAtt[2]);
@@ -297,10 +297,12 @@ public class ManageCustomer {
         }
     }
     public void updateCorCust(){
-        String ID;
+        String ID;CorCust cc1=new CorCust();
         System.out.println("Enter the corCust ID : ");
         ID=myScanner.next();
-        corCust=CC.searchCorCust(ID);
+        cc1=CC.searchCorCust(ID);
+        corCust=new CorCust(cc1.getCustID(),cc1.getContractName(),cc1.getCustPhone(),cc1.getCustAddress(),cc1.getCreditLimit()
+        ,cc1.getCustMode());
         if(CC.getCValidation()==true){
             System.out.println("0 - cancel update");
             System.out.println("1 - confirm update");
