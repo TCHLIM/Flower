@@ -17,7 +17,7 @@ public class UIDisplay {
         System.out.println("Hello. Welcome for using our system.");
         System.out.println("===== Main Menu =====");
         System.out.println("1. Update flower \n"
-                
+                +"2. Promotion of the Month \n"
                 + "0. Exit");
         int selection;
         do {

@@ -28,8 +28,8 @@ public class FlowerMaintenance implements FlowerMaintenanceInterface{
                 tmp.add(flowerList.getEntry(i));
             }
         }
-        Flower staff = tmp.getEntry(selectiondelete - 1);
-        flowerList = delete(flowerList, staff);
+        Flower flower = tmp.getEntry(selectiondelete - 1);
+        flowerList = delete(flowerList, flower);
         return flowerList;
     }
 }
