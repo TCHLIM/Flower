@@ -18,7 +18,7 @@ public class Consumer extends Customer {
         
     }
     public Consumer(String custID,String custName, String custIC, String custGender, String custPhone, String custAddress,String custMode){
-        super();
+        super(custID,custPhone,custAddress,custMode);
         this.custName=custName;
         this.custIC=custIC;
         this.custGender=custGender;

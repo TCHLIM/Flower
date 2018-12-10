@@ -25,7 +25,7 @@ public class ConsumerDA {
             if(!"DELETED".equals(consumer.getCustMode())&&custID.equals(consumer.getCustID())){
                 validation=true;
                 countPlace=consumerList.size();
-            }else{validation=false;}
+            }else{validation=false;consumer=new Consumer();}
             countPlace++;
         }
         if(validation==false){System.out.println("No such record...");}
@@ -68,7 +68,7 @@ public class ConsumerDA {
         while(countPlace<consumerList.size()){
             if(consumer.getCustID().equals(c.getCustID())){
                 consumerList.set(countPlace, c);
-                validation=true;
+                validation=true;System.out.println("record updated...");
                 countPlace=consumerList.size();
             }else{validation = false;}
         }

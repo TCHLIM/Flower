@@ -14,10 +14,10 @@ public class CorCust extends Customer{
     private String creditLimit;
 
     public CorCust(){
-        
+
     }
-    public CorCust(String custID,String custPhone, String custAddress,String custMode,String contractName, String creditLimit){
-        super();
+    public CorCust(String custID,String contractName, String custPhone, String custAddress,String creditLimit,String custMode){
+        super(custID,custPhone,custAddress,custMode);
         this.contractName = contractName;
         this.creditLimit=creditLimit;
     }

@@ -18,7 +18,19 @@ public class CustomerControl {
     ConsumerDA consumerDA= new ConsumerDA();
     CorCustDA corCustDA = new CorCustDA();
         
-    
+    public void initialized(){
+        consumerDA.getLastID();
+        if(consumerDA.getValidation()==false){
+            consumer=new Consumer("C0001","CHUEN","981206145493","MALE","01127011502","16,jln8/17,tmn fadason,kl","EXISTING");
+            consumerDA.add(consumer);
+        }
+        corCustDA.getLastID();
+        if(corCustDA.getValidation()==false){
+            corCust=new CorCust("B0001","CHUEN","01127011502","16,jln8/17,tmn fadason,kl","2000","EXISTING");
+            corCustDA.add(corCust);
+        }
+            
+    }
     
     public boolean checkInputValidation(String type, String userInput){
         int countPlace=0;

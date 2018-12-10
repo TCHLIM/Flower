@@ -15,12 +15,13 @@ import java.util.Scanner;
 public class ManageCustomer {
     CustomerControl CC = new CustomerControl();
     Scanner myScanner = new Scanner(System.in);
-    Consumer consumer;
-    CorCust corCust;
+    Consumer consumer=new Consumer();
+    CorCust corCust=new CorCust();
     private String custType;
     private String[] consumerAtt={"ID: ", "Name: ","IC: ","Gender: [1-Male, 2-Female] ","Phone: ","Address: "};
     private String[] corCustAtt={"ID: ","Contract Name: ","Phone: ","Address: ","Credit Limit: "};
     public ManageCustomer(){
+        CC.initialized();
         custTypeMenu();
         functionMenu(); 
     }
@@ -149,10 +150,12 @@ public class ManageCustomer {
         }
     }
     public void updateConsumer(){
-        String ID;
+        String ID;Consumer c1;
         System.out.println("Enter the consumer ID : ");
         ID=myScanner.next();
         consumer=CC.searchConsumer(ID);
+        c1=new Consumer(consumer.getCustID(),consumer.getCustName(),consumer.getCustIC(),consumer.getCustGender(),
+        consumer.getCustPhone(),consumer.getCustGender(),consumer.getCustMode());
         if(CC.getValidation()==true){
             System.out.println("0 - cancel update");
             System.out.println("1 - confirm update");
@@ -167,7 +170,7 @@ public class ManageCustomer {
                 System.out.println("Enter the number 0-6 to select function");
                 String userSelection = myScanner.next();
                 switch(userSelection){
-                    case "0":consumer=new Consumer();checkSelection=false;break;
+                    case "0":System.out.println("update cancelled...");consumer=c1;checkSelection=false;break;
                     case "1":CC.updateConsumer(consumer);checkSelection=false;break;
                     case "2":System.out.println(consumerAtt[1]);consumer.setCustName(myScanner.next());break;
                     case "3":String IC;System.out.println(consumerAtt[2]);
@@ -188,7 +191,7 @@ public class ManageCustomer {
                 }
             }while(checkSelection==true);
         }
-        consumer=new Consumer();
+        
         System.out.println("Enter 'y' to continue update. Anything to function menu");
         String userReply=myScanner.next();
         switch(userReply.toUpperCase()){
