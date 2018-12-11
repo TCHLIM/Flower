@@ -29,10 +29,10 @@ public class UIDisplay {
                 scanner.nextLine();
                 selection = 0;
             }
-            if (selection < 0 || selection > 1) {
+            if (selection < 0 || selection > 2) {
                 System.out.print("*****selection within 0 to 8.\nPlease enter your selection:");
             }
-        } while (selection < 0 || selection > 1);
+        } while (selection < 0 || selection > 2);
         return selection;
     }
 

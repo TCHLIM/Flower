@@ -10,9 +10,9 @@ import ADT.ListInterface;
 import domain.Promotion;
 
 public interface PromotionMaintenanceInterface {
-    public ListInterface<Promotion> update (ListInterface<Promotion> flowerList,Promotion promotion);
-    public ListInterface<Promotion> delete(ListInterface<Promotion> flowerList, Promotion promotion);
-    public ListInterface<Promotion> delete(ListInterface<Promotion> flowerList, int selectiondelete);
-    public ListInterface<Promotion> updateQuan(ListInterface<Promotion> flowerList, Promotion promotion,int disc);
+    public ListInterface<Promotion> update (ListInterface<Promotion> promotionList,Promotion promotion);
+    public ListInterface<Promotion> delete(ListInterface<Promotion> promotionList, Promotion promotion);
+    public ListInterface<Promotion> delete(ListInterface<Promotion> promotionList, int selectiondelete);
+    public ListInterface<Promotion> updateQuan(ListInterface<Promotion> promotionList, Promotion promotion,int disc);
     
 }

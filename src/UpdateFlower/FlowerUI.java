@@ -161,12 +161,12 @@ public class FlowerUI {
                     try {
                         quan = scanner.nextInt();
                     } catch (Exception ex) {
-                        System.out.println("****Age must be Integer.");
+                        System.out.println("****Quantity must be Integer.");
                         scanner.nextLine();
                         quan = 0;
                     }
                     if (quan <= 0) {
-                        System.out.println("****Age must gatther then 0.");
+                        System.out.println("****Quantity must gatther then 0.");
                     }
                 } while (quan <= -1);
                 flower.setQuantity(quan);
