@@ -21,13 +21,15 @@ public class CustomerControl {
     public void initialized(){
         consumerDA.getLastID();
         if(consumerDA.getValidation()==false){
-            consumer=new Consumer("C0001","CHUEN","981206145493","MALE","01127011502","16,jln8/17,tmn fadason,kl","EXISTING");
-            consumerDA.add(consumer);
+            consumerDA.add(new Consumer("C0001","CHUEN","981206145493","MALE","01127011502","16,jln8/17,tmn fadason,kl","EXISTING"));
+            
         }
         corCustDA.getLastID();
         if(corCustDA.getValidation()==false){
-            corCust=new CorCust("B0001","CHUEN","01127011502","16,jln8/17,tmn fadason,kl","2000","EXISTING");
-            corCustDA.add(corCust);
+            
+            corCustDA.add(new CorCust("B0001","CHUEN BHD","01127011502","16,jln8/17,tmn fadason,kl","2000","EXISTING"));
+            corCustDA.add(new CorCust("B0002","DDDD BHD","01127011502","16,jln8/17,tmn fadason,kl","2000","EXISTING"));
+            corCustDA.add(new CorCust("B0003","????? BHD","01127011502","16,jln8/17,tmn fadason,kl","2000","EXISTING"));
         }
             
     }

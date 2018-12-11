@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package ui;
-import control.CustomerControl;
+import control.*;
 import domain.*;
 import static java.lang.System.exit;
 import java.util.Scanner;
@@ -21,11 +21,14 @@ public class ManageCustomer {
     private String[] consumerAtt={"ID: ", "Name: ","IC: ","Gender: [1-Male, 2-Female] ","Phone: ","Address: "};
     private String[] corCustAtt={"ID: ","Contract Name: ","Phone: ","Address: ","Credit Limit: "};
     public ManageCustomer(){
-        CC.initialized();
+       
+    }
+    public void startManage(){
+        
         custTypeMenu();
         functionMenu(); 
     }
-       
+     
     public void clearAll(){
         consumer = new Consumer();corCust=new CorCust();
     }
@@ -243,12 +246,12 @@ public class ManageCustomer {
     
     
     public void addCorCust(){
-        int countPlace=0;
+        int countPlace=0;String ID;
         while(countPlace<corCustAtt.length){
             System.out.println(corCustAtt[countPlace]);
             //System.out.println("");
             switch(countPlace){
-                case 0:String ID=CC.AutoIDGenerator("corCust"); System.out.println(ID);corCust.setCustID(ID);break;
+                case 0:ID=CC.AutoIDGenerator("corCust"); System.out.println(ID);corCust.setCustID(ID);break;
                 case 1:corCust.setContractName(myScanner.next());break;
                 
                 case 2: String phone;
@@ -264,7 +267,8 @@ public class ManageCustomer {
             }
             countPlace++;
         }
-        corCust.setCustMode("EXISTING");CC.addCorCust(corCust);corCust=new CorCust();
+        corCust.setCustMode("EXISTING");
+        CC.addCorCust(corCust);corCust=new CorCust();
         System.out.println("Enter 'y' to continue add. Anything to function menu");
         String userReply=myScanner.next();
         switch(userReply.toUpperCase()){
