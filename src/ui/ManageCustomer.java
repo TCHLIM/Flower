@@ -41,7 +41,7 @@ public class ManageCustomer {
         switch(custType){
             case "1": custType = "CONSUMER";functionMenu();break;
             case "2": custType="CORPORATE CUSTOMER";functionMenu();break;
-            case "5":exit(-1);break;
+            case "5":exit(0);break;
             default:System.out.println("Only enter '1'-Consumer, '2'-Corporate Customer");
                     custTypeMenu();break;
         }
@@ -65,7 +65,7 @@ public class ManageCustomer {
         System.out.println("##############################################################");
 
         switch(userSelection){
-            case "0" : exit(-1);break;
+            case "0" : exit(0);break;
             case "1" :custTypeMenu();break;
             case "2" :if("CONSUMER".equals(custType)){addConsumer();
                       }else{
