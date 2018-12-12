@@ -42,13 +42,14 @@ public class FlowerUI {
     public int displayViewAllFlower(ListInterface<Flower> flowerList) {
        
         System.out.println("\n===== All FlowerPackage=====");
-        System.out.printf("|%3s|%3s|%20s|%50s|%13s|\n", "NO", "ID", "Name", "DES", "Quantity");
+        System.out.printf("|%3s|%3s|%20s|%50s|%13s|%-10s\n", "NO", "ID", "Name", "DES", "Quantity","Type");
         int count=0;
         for (int i = 0; i < flowerList.getNumberOfEntries() + 1; i++) {
             if (flowerList.getEntry(i).isStatus()) {
                 count++;
-                System.out.printf("|%3d|%3d|%20s|%50s|%13d|\n", count, flowerList.getEntry(i).getId(),
-                        flowerList.getEntry(i).getName(), flowerList.getEntry(i).getDes(), flowerList.getEntry(i).getQuantity());
+                System.out.printf("|%3d|%3d|%20s|%50s|%13d|%-10s\n", count, flowerList.getEntry(i).getId(),
+                        flowerList.getEntry(i).getName(), flowerList.getEntry(i).getDes(),
+                        flowerList.getEntry(i).getQuantity(), flowerList.getEntry(i).getType());
             }
         }
         int selection;
@@ -71,7 +72,7 @@ public class FlowerUI {
     public int displayEditFlower(ListInterface<Flower> flowerList) {
        
         System.out.println("\n===== View All FlowerPackage (Edit)=====");
-        System.out.printf("|%3s|%3s|%20s|%50s|%13s|\n", "NO", "ID", "Name", "DES", "Quantity");
+        System.out.printf("|%3s|%3s|%20s|%50s|%13s|%-10s\n", "NO", "ID", "Name", "DES", "Quantity","Type");
         ListInterface<Flower> tmp = new List<>();
         for (int i = 0; i < flowerList.getNumberOfEntries() + 1; i++) {
             if (flowerList.getEntry(i).isStatus()) {
@@ -79,8 +80,8 @@ public class FlowerUI {
             }
         }
         for (int i = 0; i < tmp.getNumberOfEntries() + 1; i++) {
-            System.out.printf("|%3d|%3d|%20s|%50s|%13d|\n", i + 1, tmp.getEntry(i).getId(),
-                    tmp.getEntry(i).getName(), tmp.getEntry(i).getDes(), tmp.getEntry(i).getQuantity());
+            System.out.printf("|%3d|%3d|%20s|%50s|%13d|%-10s\n", i + 1, tmp.getEntry(i).getId(),
+                    tmp.getEntry(i).getName(), tmp.getEntry(i).getDes(), tmp.getEntry(i).getQuantity(),flowerList.getEntry(i).getType());
         }
 
         System.out.println("\nTotol FlowerPackage = " + (tmp.getNumberOfEntries() + 1));
@@ -112,12 +113,13 @@ public class FlowerUI {
         }
         Flower flower = tmp.getEntry(selected - 1);
         System.out.println("\n===== Edit Flower Detail =====");
-        System.out.printf("|%3s|%20s|%50s|%13s|\n", "ID", "Name", "DES", "Quantity");
-        System.out.printf("|%3d|%20s|%50s|%13d|\n", flower.getId(),
-                flower.getName(), flower.getDes(), flower.getQuantity());
+        System.out.printf("|%3s|%20s|%50s|%13s|%-10s\n", "ID", "Name", "DES", "Quantity","Type");
+        System.out.printf("|%3d|%20s|%50s|%13d|%-10s\n", flower.getId(),
+                flower.getName(), flower.getDes(), flower.getQuantity(),flower.getType());
         System.out.println("1. Name\n"
                 + "2. DES\n"
-                + "3. Quantity\n");
+                + "3. Quantity\n"
+                + "4. Type \n");
         int selection;
         do {
             System.out.print("Please enter your selection:");
@@ -128,10 +130,10 @@ public class FlowerUI {
                 scanner.nextLine();
                 selection = 0;
             }
-            if (selection < 0 || selection > 3) {
-                System.out.print("*****selection within 0 to 3.\nPlease enter your selection:");
+            if (selection < 0 || selection > 4) {
+                System.out.print("*****selection within 0 to 4.\nPlease enter your selection:");
             }
-        } while (selection < 0 || selection > 3);
+        } while (selection < 0 || selection > 4);
 
         switch (selection) {
             case 1:
@@ -171,16 +173,26 @@ public class FlowerUI {
                 } while (quan <= -1);
                 flower.setQuantity(quan);
                 break;
+            case 4:
+                String type;
+                System.out.print("Type: ");
+                type = scanner.nextLine();
+                while (type.trim().length() == 0) {   //if didnot type any things 
+                    System.out.print("*****Type is required.\nTYPE: ");
+                    type = scanner.nextLine();
+                }
+                flower.setType(type);
+                break;
         }
 
-        FlowerMaintenanceInterface STFun = new FlowerMaintenance();
-        return STFun.update(flowerList, flower);
+        FlowerMaintenanceInterface FMFun = new FlowerMaintenance();
+        return FMFun.update(flowerList, flower);
     }
 
     public int displayDeleteFlower(ListInterface<Flower> flowerList) {
        
         System.out.println("\n===== View All Flower (Delete)=====");
-        System.out.printf("|%3s|%3s|%20s|%50s|%13s|\n", "NO", "ID", "Name", "DES", "Quantity");
+        System.out.printf("|%3s|%3s|%20s|%50s|%13s|%-10s\n", "NO", "ID", "Name", "DES", "Quantity","Type");
         ListInterface<Flower> tmp = new List<>();
         for (int i = 0; i < flowerList.getNumberOfEntries() + 1; i++) {
             if (flowerList.getEntry(i).isStatus()) {
@@ -188,8 +200,8 @@ public class FlowerUI {
             }
         }
         for (int i = 0; i < tmp.getNumberOfEntries() + 1; i++) {
-            System.out.printf("|%3d|%3d|%20s|%50s|%13d|\n", i + 1, tmp.getEntry(i).getId(),
-                    tmp.getEntry(i).getName(), tmp.getEntry(i).getDes(), tmp.getEntry(i).getQuantity());
+            System.out.printf("|%3d|%3d|%20s|%50s|%13d|%-10s\n", i + 1, tmp.getEntry(i).getId(),
+                    tmp.getEntry(i).getName(), tmp.getEntry(i).getDes(), tmp.getEntry(i).getQuantity(),tmp.getEntry(i).getType());
 
         }
         System.out.println("\nTotol FoodPackage = " + (tmp.getNumberOfEntries() + 1));
@@ -215,6 +227,7 @@ public class FlowerUI {
      
         String name;
         String des;
+        String type;
         System.out.println("\n===== Flower=====");
         System.out.println("Please fill in all the information.");
         System.out.print("Name: ");
@@ -229,20 +242,27 @@ public class FlowerUI {
             System.out.print("*****DES is required.\nDES: ");
             des = scanner.nextLine();
         }
-        Flower flower = new Flower(name, des, 0, true);
+        System.out.print("Type: ");
+        type = scanner.nextLine();
+        while (type.trim().length() == 0) {   //if didnot type any things 
+            System.out.print("*****TYPE is required.\nTYPE: ");
+            type = scanner.nextLine();
+        }
+        Flower flower = new Flower(name, des, 0, true, type);
         return flower;
     }
 
     public int addFlower(ListInterface<Flower> flowerList) {
        
         System.out.println("\n===== All FlowerPackage=====");
-        System.out.printf("|%3s|%3s|%20s|%50s|%13s|\n", "NO", "ID", "Name", "DES", "Quantity");
+        System.out.printf("|%3s|%3s|%20s|%50s|%13s|%-10s\n", "NO", "ID", "Name", "DES", "Quantity","Type");
         int count =0;
         for (int i = 0; i < flowerList.getNumberOfEntries() + 1; i++) {
             if (flowerList.getEntry(i).isStatus()) {
                 count++;
-                System.out.printf("|%3d|%3d|%20s|%50s|%13d|\n", count, flowerList.getEntry(i).getId(),
-                        flowerList.getEntry(i).getName(), flowerList.getEntry(i).getDes(), flowerList.getEntry(i).getQuantity());
+                System.out.printf("|%3d|%3d|%20s|%50s|%13d|%-10s\n", count, flowerList.getEntry(i).getId(),
+                        flowerList.getEntry(i).getName(), flowerList.getEntry(i).getDes(), 
+                        flowerList.getEntry(i).getQuantity(), flowerList.getEntry(i).getType());
             }
         }
         System.out.println("0.  Back");
