@@ -68,6 +68,6 @@ public class Promotion {
 
  
     public String toString() {
-        return String.format("%-3d|%-10s|%-50s|%-10d", id, name, des, discount);
+        return String.format("%-13d|%-30s|%-50s|%-10d", id, name, des, discount);
     }
 }
