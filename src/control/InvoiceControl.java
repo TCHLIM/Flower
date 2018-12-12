@@ -59,7 +59,7 @@ public class InvoiceControl {
     
     public String checkCustomer(){
         String custID;
-        System.out.println("Enter the corporate customer id or -1 to exit");
+        System.out.println("Enter the corporate customer id or 'use -1 to exit'");
         custID=myScanner.next();
         if("-1".equals(custID)){System.exit(0);}
         return custID;
