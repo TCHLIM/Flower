@@ -7,6 +7,7 @@ hoose Tools | Templates
 package control;
 import da.*;
 import domain.*;
+import java.util.List;
 /**
  *
  * @author jiachuen
@@ -33,7 +34,18 @@ public class CustomerControl {
         }
             
     }
-    
+    public List<Consumer> getAllConsumer(){
+        return consumerDA.getAll();
+    }
+    public List<CorCust> getAllCorCust(){
+        return corCustDA.getAll();
+    }
+    public void refreshConsumer(List<Consumer> c){
+        consumerDA.refreshConsumer(c);
+    }
+    public void refreshCorCust(List<CorCust> cc){
+        corCustDA.refreshCorCust(cc);
+    }
     public boolean checkInputValidation(String type, String userInput){
         int countPlace=0;
         boolean validation=true;

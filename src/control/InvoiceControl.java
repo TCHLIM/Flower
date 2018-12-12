@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package control;
 import java.util.*;
 import domain.*;
-import ui.*;
 
 import da.*;
 /**
@@ -35,7 +29,9 @@ public class InvoiceControl {
         invoiceDA.add(new Invoice("V0001","B0003",orderID2));
         invoiceDA.add(invoice);
     }
-    
+    public void refreshInvoice(List<Invoice> inv){
+        invoiceDA.refreshInvoice(inv);
+    }
     public void addInvoice(Invoice inv){
         invoiceDA.add(inv);
     }
@@ -63,8 +59,9 @@ public class InvoiceControl {
     
     public String checkCustomer(){
         String custID;
-        System.out.println("Enter the corporate customer id");
+        System.out.println("Enter the corporate customer id or -1 to exit");
         custID=myScanner.next();
+        if("-1".equals(custID)){System.exit(0);}
         return custID;
     }
     public String invMonth(){

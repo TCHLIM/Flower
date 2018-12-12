@@ -7,6 +7,7 @@ package ui;
 import control.*;
 import domain.*;
 import static java.lang.System.exit;
+import java.util.List;
 import java.util.Scanner;
 /**
  *
@@ -28,7 +29,19 @@ public class ManageCustomer {
         custTypeMenu();
         functionMenu(); 
     }
-     
+    public List<Consumer> getAllConsumer(){
+        return CC.getAllConsumer();
+    }
+    public List<CorCust> getAllCorCust(){
+        return CC.getAllCorCust();
+    }
+    public void refreshConsumer(List<Consumer> c){
+        CC.refreshConsumer(c);
+    }
+    public void refreshCorCust(List<CorCust> cc){
+        CC.refreshCorCust(cc);
+                
+    }
     public void clearAll(){
         consumer = new Consumer();corCust=new CorCust();
     }

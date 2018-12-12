@@ -17,7 +17,9 @@ public class InvoiceDA {
     Invoice invoice = new Invoice();
     List<Invoice> invoiceList = new ArrayList();
     
-
+    public List<Invoice> getAll(){
+        return invoiceList;
+    }
     public void add(Invoice inv){
         invoiceList.add(inv);
     }
@@ -30,7 +32,7 @@ public class InvoiceDA {
     public void delete(String ID){
         
     }
-    public List<Invoice> getAll(){
-        return invoiceList;
+    public void refreshInvoice(List<Invoice> inv){
+        this.invoiceList=inv;
     }
 }

@@ -19,6 +19,9 @@ public class CorCustDA {
     public boolean getValidation(){
         return validation;
     }
+    public void refreshCorCust(List<CorCust> cc){
+        this.corCustList=cc;
+    }
     public CorCust search(String custID){
         int countPlace=0;
         while(countPlace< corCustList.size()){
@@ -32,6 +35,11 @@ public class CorCustDA {
         if(validation==false){System.out.println("No such record...");}
         return corCust;
     }
+    
+    public List<CorCust> getAll(){
+        return corCustList;
+    }
+    
     
     public void add(CorCust c){
         corCustList.add(c);
