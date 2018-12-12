@@ -28,10 +28,10 @@ public class Main {
     private void initComponents(){
         
     flowerList = new List<>();
-    flowerList.add(new Flower("Red flower", "red color", 20, true));
-    flowerList.add(new Flower("Blue flower", "Blue color", 20, true));
-    flowerList.add(new Flower("Yellow flower", "Yellow color", 20, true));
-    flowerList.add(new Flower("Grey flower", "Grey color", 20, true));
+    flowerList.add(new Flower("Red flower", "red color", 20, true,"flower"));
+    flowerList.add(new Flower("Blue flower", "Blue color", 20, true, "bouquets"));
+    flowerList.add(new Flower("Yellow flower", "Yellow color", 20, true,"floral"));
+    flowerList.add(new Flower("Grey flower", "Grey color", 20, true,"flower"));
     
     promotionList = new List<>();
     promotionList.add(new Promotion("Buy 3 ", "Any flower buy equal 3", 20, true));
