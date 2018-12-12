@@ -34,13 +34,17 @@ public class UniversalControl {
         MC.CC.initialized();
         IC.initialized();String userReply;
         do{
+            System.out.println("####################################################################");
+            System.out.println("------------------------Generate Invoice----------------------------");
+            System.out.println("###################################################################\n");
+
             String custID;
             do{
                 custID=IC.checkCustomer();
                 MC.corCust=MC.CC.searchCorCust(custID);
             }while(MC.CC.getCValidation()==false);
-
-            IC.printPdf(MC.corCust,IC.getAll(),orderList,IC.invMonth(),IC.invYear());
+            
+            IC.printPdf(MC.corCust,IC.getAll(),orderList,"DEC","2018");
             System.out.println("generate next?Y/N");
             userReply=s.next();
         }while("Y".equals(userReply.toUpperCase())||"YES".equals(userReply.toUpperCase()));

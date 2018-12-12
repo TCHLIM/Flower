@@ -24,9 +24,9 @@ public class InvoiceControl {
         String orderID[]={"O0001","O0002"};
         invoiceDA.add(new Invoice("V0001","B0001",orderID));
         String orderID1[]={"O0003","O0004"};
-        invoiceDA.add(new Invoice("V0001","B0002",orderID1));
+        invoiceDA.add(new Invoice("V0002","B0002",orderID1));
         String orderID2[]={"O0005"};
-        invoiceDA.add(new Invoice("V0001","B0003",orderID2));
+        invoiceDA.add(new Invoice("V0003","B0003",orderID2));
         invoiceDA.add(invoice);
     }
     public void refreshInvoice(List<Invoice> inv){
@@ -59,6 +59,7 @@ public class InvoiceControl {
     
     public String checkCustomer(){
         String custID;
+
         System.out.println("Enter the corporate customer id or 'use -1 to exit'");
         custID=myScanner.next();
         if("-1".equals(custID)){System.exit(0);}
@@ -66,7 +67,6 @@ public class InvoiceControl {
     }
     public String invMonth(){
         boolean validation=true;String invMonth;
-        
         System.out.println("Enter 1 - 12 to select month of invoice");
         do{validation=true;invMonth=myScanner.next();
             switch(invMonth){
@@ -102,7 +102,6 @@ public class InvoiceControl {
         return invYear;
     }
    
-    
     public void printPdf(CorCust corCust,List<Invoice> invoiceList,List<VOrder> orderList,String month,String year){
         int countPlace=0;
         while(countPlace<invoiceList.size()){
@@ -110,6 +109,7 @@ public class InvoiceControl {
             if(invoice.getCorCustID().equals(corCust.getCustID())){countPlace=invoiceList.size();}//end if
             countPlace++;
         }//end while
+        
         System.out.println("#####################################################################################");
         System.out.println("Fiore Flower Shop"+"                    INVOICE"+"");
         System.out.println("                                   INVOICE# | MONTH");
