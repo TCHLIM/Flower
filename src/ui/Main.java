@@ -28,15 +28,16 @@ public class Main {
     private void initComponents(){
         
     flowerList = new List<>();
-    flowerList.add(new Flower("Red flower", "red color", 20, true,"flower"));
-    flowerList.add(new Flower("Blue flower", "Blue color", 20, true, "bouquets"));
-    flowerList.add(new Flower("Yellow flower", "Yellow color", 20, true,"floral"));
-    flowerList.add(new Flower("Grey flower", "Grey color", 20, true,"flower"));
+    flowerList.add(new Flower("Red flower", "red color", 20, true,"flower",10));
+    flowerList.add(new Flower("Blue bouquets", "Blue color", 20, true, "bouquets",10));
+    flowerList.add(new Flower("Yellow floral", "Yellow color", 20, true,"floral",10));
+    flowerList.add(new Flower("Grey flower", "Grey color", 20, true,"flower",10));
+    flowerList.add(new Flower("Black flower", "Grey color", 0, true,"flower",10));
     
     promotionList = new List<>();
     promotionList.add(new Promotion("Buy 3 ", "Any flower buy equal 3", 20, true));
-    promotionList.add(new Promotion("Buy 5 ", "Any flower buy equal 3", 35, true));
-    promotionList.add(new Promotion("Buy 10 ", "Any flower buy equal 3", 85, true));
+    promotionList.add(new Promotion("Buy 5 ", "Any flower buy equal 5", 35, true));
+    promotionList.add(new Promotion("Buy 10 ", "Any flower buy equal 10", 85, true));
     
     }
     
@@ -89,6 +90,9 @@ public class Main {
                             scanner.nextLine();
                             runprogram();
                         }
+                    case 6:
+                        showflower.displayOutOfStock(flowerList);
+                        runprogram();
                    default:
                         runprogram();
                 }

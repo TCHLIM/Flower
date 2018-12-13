@@ -10,14 +10,16 @@ public class Flower {
     private int quantity;
     private boolean status;
     private String type;
+    private int price;
     
-    public Flower(String name, String des, int quantity, boolean status, String type) {
+    public Flower(String name, String des, int quantity, boolean status, String type, int price) {
         this.id = nextId++;
         this.name = name;
         this.des = des;
         this.quantity = quantity;
         this.status = status;
         this.type = type;
+        this.price=price;
     }
 
     public boolean isStatus() {
@@ -75,9 +77,16 @@ public class Flower {
     public void setType(String type) {
         this.type = type;
     }
+    public int getPrice(){
+        return price;
+    }
+    
+    public void setPrice(int price) {
+        this.price = price;
+    }
  
     public String toString() {
-        return String.format("%-3d|%-10s|%-50s|%-10d|%-10s", id, name, des, quantity,type);
+        return String.format("%-3d|%-10s|%-50s|%-10d|%-10s|%-10d", id, name, des, quantity,type,price);
     }
 }
 

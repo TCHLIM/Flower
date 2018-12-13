@@ -15,7 +15,11 @@ public class FlowerMaintenance implements FlowerMaintenanceInterface{
         flowerList.replace(flowerList.containsposition(flower), flower);
         return flowerList;
     }
-
+    /*public ListInterface<Flower> updatePrice(ListInterface<Flower> flowerList, Flower flower,double price) {
+        flower.setPrice(flower.getPrice()+price);
+        flowerList.replace(flowerList.containsposition(flower), flower);
+        return flowerList;
+    }*/
     public ListInterface<Flower> delete(ListInterface<Flower> flowerList, Flower flower) {
         flowerList.getEntry(flowerList.containsposition(flower)).setStatus(false);
         return flowerList;
