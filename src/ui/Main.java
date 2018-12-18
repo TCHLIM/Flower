@@ -1,4 +1,3 @@
-
 package ui;
 
 import ADT.List;
@@ -15,41 +14,46 @@ import java.util.Scanner;
 
 public class Main {
 
-    private ListInterface<Flower> flowerList;
+    public ListInterface<Flower> flowerList;
     private ListInterface<Promotion> promotionList;
-    private Scanner scanner = new Scanner(System.in);        
-    
+    private Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
+        int i = 0;
         Main newMain = new Main();
-        newMain.initComponents();
+        newMain.initComponents(i);
         newMain.runprogram();
     }
-    
-    private void initComponents(){
-        
-    flowerList = new List<>();
-    flowerList.add(new Flower("Red flower", "red color", 20, true,"flower",10));
-    flowerList.add(new Flower("Blue bouquets", "Blue color", 20, true, "bouquets",10));
-    flowerList.add(new Flower("Yellow floral", "Yellow color", 20, true,"floral",10));
-    flowerList.add(new Flower("Grey flower", "Grey color", 20, true,"flower",10));
-    flowerList.add(new Flower("Black flower", "Grey color", 0, true,"flower",10));
-    
-    promotionList = new List<>();
-    promotionList.add(new Promotion("Buy 3 ", "Any flower buy equal 3", 20, true));
-    promotionList.add(new Promotion("Buy 5 ", "Any flower buy equal 5", 35, true));
-    promotionList.add(new Promotion("Buy 10 ", "Any flower buy equal 10", 85, true));
-    
+
+    public int initComponents(int i) {
+        if (i == 0) {
+            flowerList = new List<>();
+            flowerList.add(new Flower("Red flower", "red color", 20, true, "flower", 10));
+            flowerList.add(new Flower("Blue bouquets", "Blue color", 20, true, "bouquets", 10));
+            flowerList.add(new Flower("Yellow floral", "Yellow color", 20, true, "floral", 10));
+            flowerList.add(new Flower("Grey flower", "Grey color", 20, true, "flower", 10));
+            flowerList.add(new Flower("Black flower", "Grey color", 0, true, "flower", 10));
+
+            promotionList = new List<>();
+            promotionList.add(new Promotion("Buy 3 ", "Any flower buy equal 3", 20, true));
+            promotionList.add(new Promotion("Buy 5 ", "Any flower buy equal 5", 35, true));
+            promotionList.add(new Promotion("Buy 10 ", "Any flower buy equal 10", 85, true));
+        }
+
+        i = 1;
+        return i;
     }
-    
-    private void runprogram(){
-       UIDisplay show = new UIDisplay();
+
+    public void runprogram() {
+        UIDisplay show = new UIDisplay();
         switch (show.displayMainMenu()) {
             case 1:  /////////////register
                 FlowerUI showflower = new FlowerUI();
                 switch (showflower.displayFlowerMenu()) {
                     case 1:
                         showflower.displayViewAllFlower(flowerList);
-                        runprogram();
+                        MainMenu main = new MainMenu();
+                        main.MainMenu();
                     case 2:
                         if (flowerList.add(showflower.registerFlower())) {
                             System.out.print("########Add successful########");
@@ -93,7 +97,7 @@ public class Main {
                     case 6:
                         showflower.displayOutOfStock(flowerList);
                         runprogram();
-                   default:
+                    default:
                         runprogram();
                 }
             case 2:////////food maintenance 
@@ -142,13 +146,12 @@ public class Main {
                             scanner.nextLine();
                             runprogram();
                         }
-                   
+
                     default:
                         runprogram();
                 }
-                
+
         }
-        
-    
+
     }
 }

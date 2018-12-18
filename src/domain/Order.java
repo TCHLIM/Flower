@@ -1,30 +1,38 @@
 package domain;
 
-public class VOrder {
-    private String orderId;
+public class Order {
+
+    private int orderId;
     private String orderName;
     private int orderQuantity;
     private double orderPrice;
-    
-    public VOrder(){
-        
-    }
-    public VOrder(String orderId, String orderName, int orderQuantity, double orderPrice){
+    private String type;
+
+    public Order(int orderId, String orderName, int orderQuantity, double orderPrice, String type) {
         this.orderId = orderId;
         this.orderName = orderName;
         this.orderQuantity = orderQuantity;
         this.orderPrice = orderPrice;
-        
+        this.type = type;
+
     }
-    
-    public VOrder(String orderName, int orderQuantity, double orderPrice){
+
+    public Order(String orderName, int orderQuantity, double orderPrice) {
         this.orderName = orderName;
         this.orderQuantity = orderQuantity;
         this.orderPrice = orderPrice;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public String getOrderName() {
@@ -39,7 +47,7 @@ public class VOrder {
         return orderPrice;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
@@ -54,13 +62,10 @@ public class VOrder {
     public void setOrderPrice(double orderPrice) {
         this.orderPrice = orderPrice;
     }
-    
-    @Override
-    public String toString(){
-        return String.format(orderId+ "             " + orderName +"            "+orderQuantity+"           "+orderPrice);
-    }
-    
-    
-    
-}
 
+    @Override
+    public String toString() {
+        return String.format(orderId + "             " + orderName + "            " + orderQuantity + "           " + orderPrice + "          " + type);
+    }
+
+}

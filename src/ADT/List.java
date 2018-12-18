@@ -164,6 +164,10 @@ public class List<T> implements ListInterface<T> {
         }
     }
 
+    public int size() {
+        return numberOfEntries + 1;
+    }
+    
     private Node<T> getNodeAt(int givenPosition) {
         Node<T> currentNode = firstNode;
 

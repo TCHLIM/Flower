@@ -1,16 +1,16 @@
 package ADT;
 
-public class Node<T> {
+public class Node_1<T> {
 
     private T data;
-    private Node next;
+    private Node_1 next;
 
-    public Node(T data) {
+    public Node_1(T data) {
         this.data = data;
         next = null;
     }
 
-    public Node(T data, Node next) {
+    public Node_1(T data, Node_1 next) {
         this.data = data;
         this.next = next;
     }
@@ -19,21 +19,15 @@ public class Node<T> {
         this.data = data;
     }
 
-    public void setNext(Node next) {
+    public void setNext(Node_1 next) {
         this.next = next;
     }
 
-    public boolean isEmpty(){
-        if(next == null){
-            return true;
-        }else
-            return false;
-    }
     public T getData() {
         return data;
     }
 
-    public Node getNext() {
+    public Node_1 getNext() {
         return next;
     }
 
