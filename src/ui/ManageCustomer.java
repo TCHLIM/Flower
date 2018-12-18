@@ -7,7 +7,6 @@ package ui;
 import control.*;
 import domain.*;
 import static java.lang.System.exit;
-import java.util.List;
 import java.util.Scanner;
 /**
  *
@@ -22,34 +21,17 @@ public class ManageCustomer {
     private String[] consumerAtt={"ID: ", "Name: ","IC: ","Gender: [1-Male, 2-Female] ","Phone: ","Address: "};
     private String[] corCustAtt={"ID: ","Contract Name: ","Phone: ","Address: ","Credit Limit: "};
     public ManageCustomer(){
-        initialized();
-        startManage();
-    }
-    public void initialized(){
-        CC.initialized();
+       
     }
     public void startManage(){
+        
         custTypeMenu();
         functionMenu(); 
     }
-    
-    public List<Consumer> getAllConsumer(){
-        return CC.getAllConsumer();
-    }
-    public List<CorCust> getAllCorCust(){
-        return CC.getAllCorCust();
-    }
-    public void refreshConsumer(List<Consumer> c){
-        CC.refreshConsumer(c);
-    }
-    public void refreshCorCust(List<CorCust> cc){
-        CC.refreshCorCust(cc);
-                
-    }
+     
     public void clearAll(){
         consumer = new Consumer();corCust=new CorCust();
     }
-   
     public void custTypeMenu(){
         custType = " ";
         System.out.println("##############################################################");
@@ -255,6 +237,13 @@ public class ManageCustomer {
         
         }
     }
+    
+    
+    
+    
+    
+    
+    
     
     public void addCorCust(){
         int countPlace=0;String ID;

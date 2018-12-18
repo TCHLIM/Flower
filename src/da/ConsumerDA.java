@@ -18,13 +18,6 @@ public class ConsumerDA {
     public boolean getValidation(){
         return validation;
     }
-    public List<Consumer> getAll(){
-        return consumerList;
-    }
-    public void refreshConsumer(List<Consumer> c){
-        this.consumerList = c;
-    }
-    
     public Consumer search(String custID){
         int countPlace=0;
         while(countPlace< consumerList.size()){
