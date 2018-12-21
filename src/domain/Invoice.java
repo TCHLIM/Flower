@@ -5,20 +5,26 @@
  */
 package domain;
 
+import java.util.Date;
+
 /**
  *
  * @author jiachuen
  */
 public class Invoice {
     private String invoiceID;
+    private String invoiceStatus;
+    private Date invoiceDueDate;
     private String corCustID;
     private String orderID[];
     
     public Invoice(){
         
     }
-    public Invoice(String invoiceID,String corCustID,String orderID[]){
+    public Invoice(String invoiceID, String invoiceStatus,Date invoiceDueDate,String corCustID,String orderID[]){
         this.invoiceID=invoiceID;
+        this.invoiceStatus=invoiceStatus;
+        this.invoiceDueDate=invoiceDueDate;
         this.corCustID=corCustID;
         this.orderID=orderID;
     }
