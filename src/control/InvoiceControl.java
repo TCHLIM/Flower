@@ -15,7 +15,6 @@ import da.*;
  */
 public class InvoiceControl {
     Invoice invoice = new Invoice();
-    VOrder order = new VOrder();
     CorCust corCust=new CorCust();
     InvoiceDA invoiceDA = new InvoiceDA();
     Scanner myScanner = new Scanner(System.in);
@@ -106,7 +105,7 @@ public class InvoiceControl {
     }
    
     
-    public void printPdf(CorCust corCust,List<Invoice> invoiceList,List<VOrder> orderList,String month,String year){
+    public void printPdf(CorCust corCust,List<Invoice> invoiceList,List<Order> orderList,String month,String year){
         int countPlace=0;
         while(countPlace<invoiceList.size()){
             invoice=invoiceList.get(countPlace);

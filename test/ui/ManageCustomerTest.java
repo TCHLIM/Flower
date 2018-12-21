@@ -6,7 +6,7 @@
 package ui;
 
 import control.CustomerControl;
-import domain.Consumer;
+
 import domain.CorCust;
 import java.util.Scanner;
 import org.junit.After;
@@ -23,7 +23,6 @@ import static org.junit.Assert.*;
 public class ManageCustomerTest {
     CustomerControl CC = new CustomerControl();
     Scanner myScanner = new Scanner(System.in);
-    Consumer consumer=new Consumer();
     CorCust corCust=new CorCust();
     private String[] corCustAtt={"ID: ","Contract Name: ","Phone: ","Address: ","Credit Limit: "};
     

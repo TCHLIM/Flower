@@ -4,16 +4,15 @@
  * and open the template in the editor.
  */
 package da;
-import java.util.*;
 import domain.*;
-
+import ADT.*;
 /**
  *
  * @author jiachuen
  */
 public class CorCustDA {
     CorCust corCust = new CorCust();
-    public List<CorCust> corCustList = new ArrayList<>();
+    public ListInterface<CorCust> corCustList = new List<>();
     private boolean validation = true;
    
     public boolean getValidation(){
@@ -22,7 +21,7 @@ public class CorCustDA {
     public CorCust search(String custID){
         int countPlace=0;
         while(countPlace< corCustList.size()){
-            corCust = corCustList.get(countPlace);
+            corCust = corCustList.getEntry(countPlace);
             if(!"DELETED".equals(corCust.getCustMode())&&custID.equals(corCust.getCustID())){
                 validation=true;
                 countPlace=corCustList.size();
@@ -42,7 +41,7 @@ public class CorCustDA {
         int countPlace=0;
         while(countPlace<corCustList.size()){
             if(corCust.getCustID().equals(c.getCustID())){
-                corCustList.set(countPlace, c);
+                corCustList.replace(countPlace, c);
                 validation=true;
                 System.out.println("record updated...");
                 countPlace=corCustList.size();
@@ -52,10 +51,10 @@ public class CorCustDA {
     public void delete(String custID){
         int countPlace=0;
         while(countPlace< corCustList.size()){
-            corCust = corCustList.get(countPlace);
+            corCust = corCustList.getEntry(countPlace);
             if(!"DELETED".equals(corCust.getCustMode())&&custID.equals(corCust.getCustID())){
                 corCust.setCustMode("DELETED");
-                corCustList.set(countPlace, corCust);
+                corCustList.replace(countPlace, corCust);
                 validation=true;
                 System.out.println(custID + " are successfully deleted!!");
                 countPlace=corCustList.size();
@@ -67,7 +66,7 @@ public class CorCustDA {
         String custID="";
         validation=true;
         if(!corCustList.isEmpty()){
-           custID= corCustList.get(corCustList.size()-1).getCustID() ;
+           custID= corCustList.getEntry(corCustList.size()-1).getCustID() ;
         }else{validation=false;}
         
         return custID;

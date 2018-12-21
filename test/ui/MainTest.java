@@ -58,7 +58,7 @@ public class MainTest {
         Flower flower = new Flower("asdasd", "asdasd", 0, true, "asdasdasd",0);
         flowerList.add(flower);
         return flower;
-        assertEquals("asdasd",flowerList.getEntry(0).getName());
+        //assertEquals("asdasd",flowerList.getEntry(0).getName());
     }
 
        
