@@ -5,6 +5,7 @@ hoose Tools | Templates
  * and open the template in the editor.
  */
 package control;
+import ADT.ListInterface;
 import da.*;
 import domain.*;
 /**
@@ -100,5 +101,8 @@ public class CustomerControl {
     }
     public boolean getCValidation(){
         return corCustDA.getValidation();
+    }
+    public ListInterface<CorCust> getAllCorCust(){
+        return corCustDA.getAllCorCust();
     }
 }

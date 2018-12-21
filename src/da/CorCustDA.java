@@ -13,6 +13,7 @@ import ADT.*;
 public class CorCustDA {
     CorCust corCust = new CorCust();
     public ListInterface<CorCust> corCustList = new List<>();
+
     private boolean validation = true;
    
     public boolean getValidation(){
@@ -70,5 +71,9 @@ public class CorCustDA {
         }else{validation=false;}
         
         return custID;
+    }
+    
+    public ListInterface<CorCust> getAllCorCust(){
+        return corCustList;
     }
 }

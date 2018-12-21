@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ui;
+import ADT.ListInterface;
 import control.*;
 import domain.*;
 import static java.lang.System.exit;
@@ -17,7 +18,7 @@ public class ManageCustomer {
     Scanner myScanner = new Scanner(System.in);
     CorCust corCust=new CorCust();
     private String custType;
-    private String[] corCustAtt={"ID: ","Contract Name: ","Phone: ","Address: ","Credit Limit: "};
+    private final String[] corCustAtt={"ID: ","Contract Name: ","Phone: ","Address: ","Credit Limit: "};
     public ManageCustomer(){
        startManage();
     }
@@ -28,6 +29,9 @@ public class ManageCustomer {
      
     public void clearAll(){
         corCust=new CorCust();
+    }
+    public ListInterface<CorCust> getAllCorCust(){
+        return CC.getAllCorCust();
     }
     
     public void functionMenu(){
