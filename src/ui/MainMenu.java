@@ -17,7 +17,7 @@ public class MainMenu {
         if(choice == 1){
             
         Main newMain = new Main();
-        newMain.initComponents();
+        newMain.initComponents(5);
         newMain.runprogram();
         
         

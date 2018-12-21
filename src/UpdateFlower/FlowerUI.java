@@ -249,7 +249,7 @@ public class FlowerUI {
         String name;
         String des;
         String type;
-        double price;
+        
         System.out.println("\n===== Flower=====");
         System.out.println("Please fill in all the information.");
         System.out.print("Name: ");
