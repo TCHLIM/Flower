@@ -13,7 +13,7 @@ import domain.*;
  */
 public class CorCustDA {
     CorCust corCust = new CorCust();
-    List<CorCust> corCustList = new ArrayList<>();
+    public List<CorCust> corCustList = new ArrayList<>();
     private boolean validation = true;
    
     public boolean getValidation(){

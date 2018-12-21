@@ -16,7 +16,7 @@ public class CustomerControl {
     Consumer consumer = new Consumer();
     CorCust corCust = new CorCust();
     ConsumerDA consumerDA= new ConsumerDA();
-    CorCustDA corCustDA = new CorCustDA();
+    public CorCustDA corCustDA = new CorCustDA();
         
     public void initialized(){
         consumerDA.getLastID();
