@@ -25,23 +25,23 @@ public class InvoiceDA {
     }
     public Invoice search(String ID){
         int countPlace=0;
-        while(countPlace<invoiceList.size()){
+        while(countPlace<invoiceList.getNumberOfEntries()){
             invoice=invoiceList.getEntry(countPlace);
             if(invoice.getInvoiceID().equals(ID)){
                 validation=true;
-                countPlace=invoiceList.size();
+                countPlace=invoiceList.getNumberOfEntries();
             }else{validation = false;}
         }
         return invoice;
     }
     public void update(Invoice inv){
         int countPlace=0;
-        while(countPlace<invoiceList.size()){
+        while(countPlace<invoiceList.getNumberOfEntries()){
             invoice=invoiceList.getEntry(countPlace);
             if(invoice.getInvoiceID().equals(inv.getInvoiceID())){
                 invoiceList.replace(countPlace, inv);
                 validation=true;
-                countPlace=invoiceList.size();
+                countPlace=invoiceList.getNumberOfEntries();
             }else{validation = false;}
         }
     }

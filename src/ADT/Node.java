@@ -23,12 +23,6 @@ public class Node<T> {
         this.next = next;
     }
 
-    public boolean isEmpty(){
-        if(next == null){
-            return true;
-        }else
-            return false;
-    }
     public T getData() {
         return data;
     }

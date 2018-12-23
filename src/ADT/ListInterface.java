@@ -4,8 +4,6 @@ public interface ListInterface<T> {
 
     public boolean add(T newEntry);
 
-    public int size();
-    
     public boolean add(int newPosition, T newEntry);
 
     public void clear();
