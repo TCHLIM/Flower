@@ -16,7 +16,9 @@ public class Order {
         this.type = type;
 
     }
-
+    public Order(){
+        
+    }
     public Order(String orderName, int orderQuantity, double orderPrice) {
         this.orderName = orderName;
         this.orderQuantity = orderQuantity;
