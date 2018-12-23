@@ -32,7 +32,7 @@ public class ManageCustomer {
     }
     public ListInterface<CorCust> getAllCorCust(){
         return CC.getAllCorCust();
-    }
+    }//get All data
     
     public void functionMenu(){
         

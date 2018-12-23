@@ -29,6 +29,22 @@ public class Invoice {
         this.orderID=orderID;
     }
 
+    public void setInvoiceStatus(String invoiceStatus) {
+        this.invoiceStatus = invoiceStatus;
+    }
+
+    public void setInvoiceDueDate(Date invoiceDueDate) {
+        this.invoiceDueDate = invoiceDueDate;
+    }
+
+    public String getInvoiceStatus() {
+        return invoiceStatus;
+    }
+
+    public Date getInvoiceDueDate() {
+        return invoiceDueDate;
+    }
+
     public String getInvoiceID() {
         return invoiceID;
     }
