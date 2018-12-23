@@ -15,8 +15,8 @@ import da.*;
  * @author jiachuen
  */
 public class InvoiceDA {
-    Invoice invoice = new Invoice();
-    ListInterface<Invoice> invoiceList = new List<>();
+    private Invoice invoice = new Invoice();
+    private ListInterface<Invoice> invoiceList = new List<>();
     private boolean validation=true;
     
 

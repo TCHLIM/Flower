@@ -9,7 +9,7 @@ package domain;
  *
  * @author jiach
  */
-public class Customer {
+abstract class Customer {
     private String custID;
     private String custPhone;
     private String custAddress;

@@ -30,10 +30,10 @@ public class ManageInvoice {
         
     }
     
-    public void startInvoice(ListInterface<CorCust> corCustList){
+    public void startInvoice(ListInterface<CorCust> corCustList,ListInterface<Order> orderList){
         corCust = checkCustomer(corCustList);
         Date date=selectDate();
-        Order order=checkOrder();
+        Order order=checkOrder(orderList);
         if(corCust!=null&&date!=null){
             DisplayInvoice(corCust,invoice,order,date);
         }
@@ -100,8 +100,8 @@ public class ManageInvoice {
         }//end while
         return selectedDate;
     }
-    public Order checkOrder(){
-        Order order = new Order();
+    public Order checkOrder(ListInterface<Order> orderList){
+        Order order;
         return order;
     }
    

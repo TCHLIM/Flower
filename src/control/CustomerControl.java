@@ -15,9 +15,9 @@ import domain.*;
 public class CustomerControl {
    
     
-    CorCust corCust = new CorCust();
+    private CorCust corCust = new CorCust();
     
-    public CorCustDA corCustDA = new CorCustDA();
+    private CorCustDA corCustDA = new CorCustDA();
         
     public void initialized(){
         corCustDA.getLastID();

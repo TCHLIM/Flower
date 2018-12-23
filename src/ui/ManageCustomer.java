@@ -14,13 +14,13 @@ import java.util.Scanner;
  * @author jiachuen
  */
 public class ManageCustomer {
-    CustomerControl CC = new CustomerControl();
-    Scanner myScanner = new Scanner(System.in);
-    CorCust corCust=new CorCust();
+    private CustomerControl CC = new CustomerControl();
+    private Scanner myScanner = new Scanner(System.in);
+    private CorCust corCust=new CorCust();
     private String custType;
     private final String[] corCustAtt={"ID: ","Contract Name: ","Phone: ","Address: ","Credit Limit: "};
     public ManageCustomer(){
-       startManage();
+       
     }
     public void startManage(){
         CC.initialized();
@@ -203,11 +203,6 @@ public class ManageCustomer {
     }
     
     
-    public static void main(String[] args){
-        
-        new ManageCustomer();
-        
-    }
     
     
     

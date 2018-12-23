@@ -11,8 +11,8 @@ import ADT.*;
  * @author jiachuen
  */
 public class CorCustDA {
-    CorCust corCust = new CorCust();
-    public ListInterface<CorCust> corCustList = new List<>();
+    private CorCust corCust = new CorCust();
+    private ListInterface<CorCust> corCustList = new List<>();
 
     private boolean validation = true;
    
@@ -35,7 +35,7 @@ public class CorCustDA {
     
     public void add(CorCust c){
         corCustList.add(c);
-        System.out.println("New CorCust Added.");
+        //System.out.println("New CorCust Added.");
     }
     
     public void update(CorCust c){
