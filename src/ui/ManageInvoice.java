@@ -40,8 +40,11 @@ public class ManageInvoice {
         
     }
     public Invoice checkInvoice(){
+        invoice = new Invoice();
         
+        return invoice;
     }
+    
     public CorCust checkCustomer(ListInterface<CorCust> corCustList){
         String custID;boolean validation=false;corCust=new CorCust();
         while(validation==false){
