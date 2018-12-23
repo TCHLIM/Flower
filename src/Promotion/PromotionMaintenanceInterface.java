@@ -13,6 +13,6 @@ public interface PromotionMaintenanceInterface {
     public ListInterface<Promotion> update (ListInterface<Promotion> promotionList,Promotion promotion);
     public ListInterface<Promotion> delete(ListInterface<Promotion> promotionList, Promotion promotion);
     public ListInterface<Promotion> delete(ListInterface<Promotion> promotionList, int selectiondelete);
-    public ListInterface<Promotion> updateQuan(ListInterface<Promotion> promotionList, Promotion promotion,int disc);
+    public ListInterface<Promotion> updatePrice(ListInterface<Promotion> promotionList, Promotion promotion,double disc);
     
 }

@@ -55,7 +55,7 @@ public PromotionUI(){
         for (int i = 0; i < promotionList.getNumberOfEntries() + 1; i++) {
             if (promotionList.getEntry(i).isStatus()) {
                 count++;
-                System.out.printf("|%3d|%-13d|%-30s|%50s|%13s|\n", count, promotionList.getEntry(i).getId(),
+                System.out.printf("|%3d|%-13d|%-30s|%-50s|%-3.2f|\n", count, promotionList.getEntry(i).getId(),
                         promotionList.getEntry(i).getName(), promotionList.getEntry(i).getDes(), promotionList.getEntry(i).getDiscount());
               }
           } 
@@ -87,7 +87,7 @@ public PromotionUI(){
             }
         }
         for (int i = 0; i < tmp.getNumberOfEntries() + 1; i++) {
-            System.out.printf("|%3d|%-13d|%-30s|%50s|%-10d|\n", i + 1, tmp.getEntry(i).getId(),
+            System.out.printf("|%3s|%-13s|%-30s|%-50s|%-10.2f|\n", i + 1, tmp.getEntry(i).getId(),
                     tmp.getEntry(i).getName(), tmp.getEntry(i).getDes(), tmp.getEntry(i).getDiscount());
         }
 
@@ -120,12 +120,13 @@ public PromotionUI(){
         }
         Promotion promotion = tmp.getEntry(selected - 1);
         System.out.println("\n===== Edit Promotion Detail =====");
-        System.out.printf("|%3d|%-13d|%-30s|%50s|%-10d|\n", "ID", "Name", "DES", "Discount Price");
-        System.out.printf("|%3d|%20s|%50s|%-10d|\n", promotion.getId(),
+        System.out.printf("|%-13s|%-30s|%-50s|%-10s|\n", "ID", "Name", "DES", "Discount Price");
+        System.out.printf("|%-13s|%-30s|%-50s|%-10.2f|\n", promotion.getId(),
                 promotion.getName(), promotion.getDes(), promotion.getDiscount());
         System.out.println("1. Name\n"
                 + "2. DES\n"
-                + "3. Discount Price\n");
+                + "3. Discount Price\n"
+                + "0. Back \n");
         int selection;
         do {
             System.out.print("Please enter your selection:");
@@ -188,7 +189,7 @@ public PromotionUI(){
     public int displayDeletePromotion(ListInterface<Promotion> promotionList) {
        
         System.out.println("\n===== View All Promotion (Delete)=====");
-        System.out.printf("|%3d|%-13d|%-30s|%50s|%-10d|\n", "NO", "ID", "Name", "DES", "Discount Price");
+        System.out.printf("|%3s|%-13s|%-30s|%-50s|%-10s|\n", "NO", "ID", "Name", "DES", "Discount Price");
         ListInterface<Promotion> tmp = new List<>();
         for (int i = 0; i < promotionList.getNumberOfEntries() + 1; i++) {
             if (promotionList.getEntry(i).isStatus()) {
@@ -196,11 +197,11 @@ public PromotionUI(){
             }
         }
         for (int i = 0; i < tmp.getNumberOfEntries() + 1; i++) {
-            System.out.printf("|%3d|%3d|%20s|%-50s|%-10d|\n", i + 1, tmp.getEntry(i).getId(),
+            System.out.printf("|%3s|%-13s|%-30s|%-50s|%-10.2f|\n", i + 1, tmp.getEntry(i).getId(),
                     tmp.getEntry(i).getName(), tmp.getEntry(i).getDes(), tmp.getEntry(i).getDiscount());
 
         }
-        System.out.println("\nTotol FoodPackage = " + (tmp.getNumberOfEntries() + 1));
+        System.out.println("\nTotol PromotionPackage = " + (tmp.getNumberOfEntries() + 1));
         int selection;
         do {
             System.out.print("Please enter your selection(press 0 for back):");
@@ -249,18 +250,18 @@ public PromotionUI(){
         for (int i = 0; i < promotionList.getNumberOfEntries() + 1; i++) {
             if (promotionList.getEntry(i).isStatus()) {
                 count++;
-                System.out.printf("|%3s|%-13s|%-30s|%-50s|%-10s|\n", count, promotionList.getEntry(i).getId(),
+                System.out.printf("|%3s|%-13s|%-30s|%-50s|%-3.2f|\n", count, promotionList.getEntry(i).getId(),
                         promotionList.getEntry(i).getName(), promotionList.getEntry(i).getDes(), promotionList.getEntry(i).getDiscount());
             }
         }
-        System.out.println("0.  Back");
+        
         int selection;
         do {
             System.out.print("Please choose one : ");
             try {
-                selection = scanner.nextInt();
+                selection = (int) scanner.nextDouble();
             } catch (Exception ex) {
-                System.out.print("*****selection must be integer.\nPlease choose one:");
+                System.out.print("*****selection must be double.\nPlease choose one:");
                 scanner.nextLine();
                 selection = 0;
             }
@@ -286,14 +287,14 @@ public PromotionUI(){
         do {
             System.out.print("Please enter price: ");
             try {
-                disc = scanner.nextInt();
+                disc = (int)scanner.nextDouble();
             } catch (Exception ex) {
-                System.out.print("*****Price must be integer.\nPlease enter quantity:");
+                System.out.print("*****Price must be double.\nPlease enter price:");
                 scanner.nextLine();
                 disc = 0;
             }
             if (disc <= 1) {
-                System.out.print("*****Price must gatther then 0\nPlease enter quantity:");
+                System.out.print("*****Price must gatther then 0\nPlease enter price:");
             }
         } while (disc <= 1);
         return disc;

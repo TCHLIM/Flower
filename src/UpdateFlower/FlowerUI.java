@@ -22,6 +22,7 @@ public class FlowerUI {
                 + "4. Remove Flower \n"
                 + "5. Add Flower Quantity\n"
                 + "6. Show Out of Stock\n"
+                + "7. Show Categorized\n"
                 + "0. Back");
         int selection;
         do {
@@ -33,22 +34,22 @@ public class FlowerUI {
                 scanner.nextLine();
                 selection = 0;
             }
-            if (selection < 0 || selection > 6) {
-                System.out.print("*****selection within 0 to 5.\nPlease enter your selection:");
+            if (selection < 0 || selection > 7) {
+                System.out.print("*****selection within 0 to 7.\nPlease enter your selection:");
             }
-        } while (selection < 0 || selection > 6);
+        } while (selection < 0 || selection > 7);
 
         return selection;
     }
     public int displayViewAllFlower(ListInterface<Flower> flowerList) {
        
         System.out.println("\n===== All FlowerPackage=====");
-        System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-10s|%-10s\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
+        System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-10s|\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
         int count=0;
         for (int i = 0; i < flowerList.getNumberOfEntries() + 1; i++) {
             if (flowerList.getEntry(i).isStatus()) {
                 count++;
-                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-10s|%-10s\n", count, flowerList.getEntry(i).getId(),
+                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-3.2f|\n", count, flowerList.getEntry(i).getId(),
                         flowerList.getEntry(i).getName(), flowerList.getEntry(i).getDes(),
                         flowerList.getEntry(i).getQuantity(), flowerList.getEntry(i).getType(), flowerList.getEntry(i).getPrice());
             }
@@ -73,7 +74,7 @@ public class FlowerUI {
     public int displayEditFlower(ListInterface<Flower> flowerList) {
        
         System.out.println("\n===== View All FlowerPackage (Edit)=====");
-        System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-10s|%-10s\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
+        System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-10s|\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
         ListInterface<Flower> tmp = new List<>();
         for (int i = 0; i < flowerList.getNumberOfEntries() + 1; i++) {
             if (flowerList.getEntry(i).isStatus()) {
@@ -81,7 +82,7 @@ public class FlowerUI {
             }
         }
         for (int i = 0; i < tmp.getNumberOfEntries() + 1; i++) {
-            System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-10s|%-10s\n", i + 1, tmp.getEntry(i).getId(),
+            System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-3.2f|\n", i + 1, tmp.getEntry(i).getId(),
                     tmp.getEntry(i).getName(), tmp.getEntry(i).getDes(), tmp.getEntry(i).getQuantity(),
                     flowerList.getEntry(i).getType(),flowerList.getEntry(i).getPrice());
         }
@@ -115,14 +116,15 @@ public class FlowerUI {
         }
         Flower flower = tmp.getEntry(selected - 1);
         System.out.println("\n===== Edit Flower Detail =====");
-        System.out.printf("|%3s|%-20s|%-50s|%-13s|%-10s|%-10s\n", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
-        System.out.printf("|%3s|%-20s|%-50s|%-13s|%-10s|%-10s\n", flower.getId(),
+        System.out.printf("|%3s|%-20s|%-50s|%-13s|%-20s|%-10s|\n", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
+        System.out.printf("|%3s|%-20s|%-50s|%-13s|%-20s|%-3.2f|\n", flower.getId(),
                 flower.getName(), flower.getDes(), flower.getQuantity(),flower.getType(),flower.getPrice());
         System.out.println("1. Name\n"
                 + "2. DES\n"
                 + "3. Quantity\n"
                 + "4. Type \n"
-                + "5. Price \n");
+                + "5. Price \n"
+                + "0. Back \n");
         int selection;
         do {
             System.out.print("Please enter your selection:");
@@ -134,7 +136,7 @@ public class FlowerUI {
                 selection = 0;
             }
             if (selection < 0 || selection > 5) {
-                System.out.print("*****selection within 0 to 4.\nPlease enter your selection:");
+                System.out.print("*****selection within 0 to 5.\nPlease enter your selection:");
             }
         } while (selection < 0 || selection > 5);
 
@@ -191,7 +193,7 @@ public class FlowerUI {
                 do {
                     System.out.print("Price:");
                     try {
-                        price = scanner.nextInt();
+                        price = (int) scanner.nextDouble();
                     } catch (Exception ex) {
                         System.out.println("****Price must be Integer.");
                         scanner.nextLine();
@@ -212,7 +214,7 @@ public class FlowerUI {
     public int displayDeleteFlower(ListInterface<Flower> flowerList) {
        
         System.out.println("\n===== View All Flower (Delete)=====");
-        System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-10s|%-10s\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
+        System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-10s|\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
         ListInterface<Flower> tmp = new List<>();
         for (int i = 0; i < flowerList.getNumberOfEntries() + 1; i++) {
             if (flowerList.getEntry(i).isStatus()) {
@@ -220,12 +222,12 @@ public class FlowerUI {
             }
         }
         for (int i = 0; i < tmp.getNumberOfEntries() + 1; i++) {
-            System.out.printf("|%3d|%3d|%20s|%50s|%13d|%-10s|%-3d\n", i + 1, tmp.getEntry(i).getId(),
+            System.out.printf("|%3d|%3d|%-20s|%-50s|%-13d|%-20s|%-3.2f|\n", i + 1, tmp.getEntry(i).getId(),
                     tmp.getEntry(i).getName(), tmp.getEntry(i).getDes(), tmp.getEntry(i).getQuantity(),
                     tmp.getEntry(i).getType(),tmp.getEntry(i).getPrice());
 
         }
-        System.out.println("\nTotol FoodPackage = " + (tmp.getNumberOfEntries() + 1));
+        System.out.println("\nTotol FlowerPackage = " + (tmp.getNumberOfEntries() + 1));
         int selection;
         do {
             System.out.print("Please enter your selection(press 0 for back):");
@@ -278,12 +280,12 @@ public class FlowerUI {
     public int addFlower(ListInterface<Flower> flowerList) {
        
         System.out.println("\n===== All FlowerPackage=====");
-        System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-10s|%-10s\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
+        System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-10s|\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
         int count =0;
         for (int i = 0; i < flowerList.getNumberOfEntries() + 1; i++) {
             if (flowerList.getEntry(i).isStatus()) {
                 count++;
-                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-10s|%-10s\n", count, flowerList.getEntry(i).getId(),
+                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-3.2f|\n", count, flowerList.getEntry(i).getId(),
                         flowerList.getEntry(i).getName(), flowerList.getEntry(i).getDes(), 
                         flowerList.getEntry(i).getQuantity(), flowerList.getEntry(i).getType(), flowerList.getEntry(i).getPrice());
             }
@@ -334,33 +336,16 @@ public class FlowerUI {
         } while (quan <= 1);
         return quan;
     }
-    /*public double getAddFlowerPrice(){
-        double price;
-        do {
-            System.out.print("Please enter Price: ");
-            try {
-                price = scanner.nextInt();
-            } catch (Exception ex) {
-                System.out.print("*****Price must be integer.\nPlease enter quantity:");
-                scanner.nextLine();
-                price = 0;
-            }
-            if (price <= 1) {
-                System.out.print("*****Price must gatther then 0\nPlease enter quantity:");
-            }
-        } while (price <= 1);
-        return price;
-    }*/
     
     public int displayOutOfStock(ListInterface<Flower>flowerList){
     
         System.out.println("\n===== All FlowerPackage=====");
-        System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-10s|%-10s\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
+        System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-10s|\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
         int count=0;
         for (int i = 0; i < flowerList.getNumberOfEntries() + 1; i++) {
             if (flowerList.getEntry(i).getQuantity() == 0) {
                 count++;
-                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-10s|%-10s\n", count, flowerList.getEntry(i).getId(),
+                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-3.2f|\n", count, flowerList.getEntry(i).getId(),
                         flowerList.getEntry(i).getName(), flowerList.getEntry(i).getDes(),
                         flowerList.getEntry(i).getQuantity(), flowerList.getEntry(i).getType(), flowerList.getEntry(i).getPrice());
             }
@@ -383,7 +368,102 @@ public class FlowerUI {
         return selection;
     }
     
-    }
+    public int displayCategorize(ListInterface<Flower>flowerList){
+        int count=0;
     
+        System.out.println("Please select one category \n");
+        System.out.println("1. Birthday\n"
+                + "2. Anniversary\n"
+                + "3. Condolence\n"
+                + "4. Romance \n"
+                + "5. Graduation \n"
+                + "0. Back");
+        int selection;
+        do {
+            System.out.print("Please enter your selection:");
+            try {
+                selection = scanner.nextInt();
+            } catch (Exception ex) {
+                System.out.print("*****selection must be integer.\nPlease enter your selection:");
+                scanner.nextLine();
+                selection = 0;
+            }
+            if (selection < 0 || selection > 5) {
+                System.out.print("*****selection within 0 to 4.\nPlease enter your selection:");
+            }
+        } while (selection < 0 || selection > 5);
 
-
+        switch (selection) {
+            case 1:
+                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-10s|\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
+                for (int i = 0; i < flowerList.getNumberOfEntries()+ 1; i++) {
+                if ("Birthday".equals(flowerList.getEntry(i).getType())) {
+                    count++;
+                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-3.2f|\n", count, flowerList.getEntry(i).getId(),
+                        flowerList.getEntry(i).getName(), flowerList.getEntry(i).getDes(),
+                        flowerList.getEntry(i).getQuantity(), flowerList.getEntry(i).getType(), flowerList.getEntry(i).getPrice());
+                 
+                }     
+               }
+             break; 
+            case 2:
+                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-10s|\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
+                for (int i = 0; i < flowerList.getNumberOfEntries() + 1; i++) {
+                if ("Anniversary".equals(flowerList.getEntry(i).getType())) {
+                    count++;
+                
+                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-3.2f|\n", count, flowerList.getEntry(i).getId(),
+                        flowerList.getEntry(i).getName(), flowerList.getEntry(i).getDes(),
+                        flowerList.getEntry(i).getQuantity(), flowerList.getEntry(i).getType(), flowerList.getEntry(i).getPrice());
+                }
+                
+                       
+               }
+            break; 
+            case 3:
+                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-10s|\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
+                for (int i = 0; i < flowerList.getNumberOfEntries() + 1; i++) {
+                if ("Condolence".equals(flowerList.getEntry(i).getType())) {
+                    count++;
+                
+                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-3.2f|\n", count, flowerList.getEntry(i).getId(),
+                        flowerList.getEntry(i).getName(), flowerList.getEntry(i).getDes(),
+                        flowerList.getEntry(i).getQuantity(), flowerList.getEntry(i).getType(), flowerList.getEntry(i).getPrice());
+                }
+                
+                  
+               }
+            break; 
+            case 4:
+                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-10s|\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
+                for (int i = 0; i < flowerList.getNumberOfEntries() + 1; i++) {
+                if ("Romance".equals(flowerList.getEntry(i).getType())) {
+                    count++;
+                
+                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-3.2f|\n", count, flowerList.getEntry(i).getId(),
+                        flowerList.getEntry(i).getName(), flowerList.getEntry(i).getDes(),
+                        flowerList.getEntry(i).getQuantity(), flowerList.getEntry(i).getType(), flowerList.getEntry(i).getPrice());
+                }
+                
+                    
+               }
+              break;  
+            case 5:
+                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-10s|\n", "NO", "ID", "Name", "DES", "Quantity","Type","Price(RM)");
+                for (int i = 0; i < flowerList.getNumberOfEntries() + 1; i++) {
+                if ("Graduation".equals(flowerList.getEntry(i).getType())) {
+                    count++;
+                
+                System.out.printf("|%3s|%3s|%-20s|%-50s|%-13s|%-20s|%-3.2f|\n", count, flowerList.getEntry(i).getId(),
+                        flowerList.getEntry(i).getName(), flowerList.getEntry(i).getDes(),
+                        flowerList.getEntry(i).getQuantity(), flowerList.getEntry(i).getType(), flowerList.getEntry(i).getPrice());
+                }
+                
+                    
+               }
+             break;   
+     }
+         return selection;
+    
+    }
+}

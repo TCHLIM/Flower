@@ -14,7 +14,7 @@ public class PromotionMaintenance implements PromotionMaintenanceInterface{
         promotionList.replace(promotionList.containsposition(promotion), promotion);
         return promotionList;
     }
-    public ListInterface<Promotion> updateQuan(ListInterface<Promotion> promotionList, Promotion promotion,int disc) {
+    public ListInterface<Promotion> updatePrice(ListInterface<Promotion> promotionList, Promotion promotion,double disc) {
         promotion.setDiscount(promotion.getDiscount()+disc);
         promotionList.replace(promotionList.containsposition(promotion), promotion);
         return promotionList;

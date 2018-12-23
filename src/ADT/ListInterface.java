@@ -2,6 +2,8 @@ package ADT;
 
 public interface ListInterface<T> {
 
+    public int size();
+    
     public boolean add(T newEntry);
 
     public boolean add(int newPosition, T newEntry);

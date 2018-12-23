@@ -7,10 +7,10 @@ public class Promotion {
     private int id;
     private String name;
     private String des;
-    private int discount;
+    private double discount;
     private boolean status;
  
-    public Promotion(String name, String des, int discount, boolean status) {
+    public Promotion(String name, String des, double discount, boolean status) {
         this.id = nextId++;
         this.name = name;
         this.des = des;
@@ -58,16 +58,16 @@ public class Promotion {
         this.des = des;
     }
 
-    public int getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(double discount) {
         this.discount = discount;
     }
 
  
     public String toString() {
-        return String.format("%-13d|%-30s|%-50s|%-10d", id, name, des, discount);
+        return String.format("%-13d|%-30s|%-50s|%-3.2f", id, name, des, discount);
     }
 }

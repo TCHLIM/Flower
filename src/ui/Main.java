@@ -15,30 +15,35 @@ import java.util.Scanner;
 
 public class Main {
 
-    private ListInterface<Flower> flowerList;
-    private ListInterface<Promotion> promotionList;
+    public ListInterface<Flower> flowerList;
+    public ListInterface<Promotion> promotionList;
     private Scanner scanner = new Scanner(System.in);        
     
     public static void main(String[] args) {
+        int i = 0;
         Main newMain = new Main();
-        newMain.initComponents();
+        newMain.initComponents(i);
         newMain.runprogram();
     }
     
-    private void initComponents(){
-        
+    public int initComponents(int i){
+    if(i == 0){
     flowerList = new List<>();
-    flowerList.add(new Flower("Red flower", "red color", 20, true,"flower",10));
-    flowerList.add(new Flower("Blue bouquets", "Blue color", 20, true, "bouquets",10));
-    flowerList.add(new Flower("Yellow floral", "Yellow color", 20, true,"floral",10));
-    flowerList.add(new Flower("Grey flower", "Grey color", 20, true,"flower",10));
-    flowerList.add(new Flower("Black flower", "Grey color", 0, true,"flower",10));
+    flowerList.add(new Flower("Red rose", "red color", 20, true,"Birthday",10.5));
+    flowerList.add(new Flower("Blue rose", "Blue color", 20, true, "Anniversary",10.5));
+    flowerList.add(new Flower("White rose", "White color", 20, true,"Condolence",10.00));
+    flowerList.add(new Flower("Pink rose", "Pink color", 20, true,"Romance",10.00));
+    flowerList.add(new Flower("Yellow rose", "Yellow color", 20, true,"Graduation",10.00));
+    flowerList.add(new Flower("Black rose", "Black color", 0, true,"Graduation",10.00));
     
     promotionList = new List<>();
-    promotionList.add(new Promotion("Buy 3 ", "Any flower buy equal 3", 20, true));
-    promotionList.add(new Promotion("Buy 5 ", "Any flower buy equal 5", 35, true));
-    promotionList.add(new Promotion("Buy 10 ", "Any flower buy equal 10", 85, true));
+    promotionList.add(new Promotion("Buy 3 Rose ", "Buy Three Rose For 20 Ringgit  ", 20.00, true));
     
+    
+    }
+    
+    i = 1;
+    return i;
     }
     
     private void runprogram(){
@@ -93,6 +98,9 @@ public class Main {
                     case 6:
                         showflower.displayOutOfStock(flowerList);
                         runprogram();
+                    case 7:
+                        showflower.displayCategorize(flowerList);
+                        runprogram();
                    default:
                         runprogram();
                 }
@@ -137,7 +145,7 @@ public class Main {
                             Promotion promotion = showpromotion.getPromotion(promotionList, selected);
                             int disc = showpromotion.getAddPromotionPrice();
                             PromotionMaintenanceInterface PMFun = new PromotionMaintenance();
-                            this.promotionList = PMFun.updateQuan(promotionList, promotion, disc);
+                            this.promotionList = PMFun.updatePrice(promotionList, promotion, disc);
                             System.out.print("########Add successful########");
                             scanner.nextLine();
                             runprogram();

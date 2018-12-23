@@ -15,7 +15,7 @@ public class UIDisplay {
     public int displayMainMenu() {
      
         System.out.println("Hello. Welcome for using our system.");
-        System.out.println("===== Main Menu =====");
+        System.out.println("===== Catalog & Promotion Maintenance =====");
         System.out.println("1. Update flower \n"
                 +"2. Promotion of the Month \n"
                 + "0. Exit");
@@ -30,7 +30,7 @@ public class UIDisplay {
                 selection = 0;
             }
             if (selection < 0 || selection > 2) {
-                System.out.print("*****selection within 0 to 8.\nPlease enter your selection:");
+                System.out.print("*****selection within 0 to 2.\nPlease enter your selection:");
             }
         } while (selection < 0 || selection > 2);
         return selection;

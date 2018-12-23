@@ -55,7 +55,7 @@ public class List<T> implements ListInterface<T> {
         T result = null;
 
         if ((givenPosition >= 0) && (givenPosition <= numberOfEntries)) {
-            if (givenPosition == 0) {      // case 1: remove first entry
+            if (givenPosition == 1) {      // case 1: remove first entry
                 result = firstNode.getData();     // save entry to be removed 
                 firstNode = firstNode.getNext();
             } else {                         // case 2: givenPosition > 1
@@ -164,6 +164,10 @@ public class List<T> implements ListInterface<T> {
         }
     }
 
+     public int size() {
+        return numberOfEntries + 1;
+    }
+    
     private Node<T> getNodeAt(int givenPosition) {
         Node<T> currentNode = firstNode;
 
