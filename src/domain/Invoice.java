@@ -5,6 +5,7 @@
  */
 package domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -18,19 +19,30 @@ public class Invoice {
     private Date invoiceDueDate;
     private String corCustID;
     private String orderID[];
+    private ArrayList<InvoiceItem> itemID = new ArrayList<>();
     
     public Invoice(){
         
     }
-    public Invoice(String invoiceID, String invoiceStatus,Date currentMonth,Date invoiceDueDate,String corCustID,String orderID[]){
+    public Invoice(String invoiceID, String invoiceStatus,Date currentMonth,Date invoiceDueDate,String corCustID,ArrayList<InvoiceItem> itemID){
         this.invoiceID=invoiceID;
         this.invoiceStatus=invoiceStatus;
         this.invoiceDueDate=invoiceDueDate;
         this.corCustID=corCustID;
         this.orderID=orderID;
         this.currentMonth = currentMonth;
+        this.itemID=itemID;
     }
 
+    public ArrayList<InvoiceItem> getItemID() {
+        return itemID;
+    }
+
+    public void setItemID(ArrayList<InvoiceItem> itemID) {
+        this.itemID = itemID;
+    }
+
+  
     public void setCurrentMonth(Date currentMonth) {
         this.currentMonth = currentMonth;
     }

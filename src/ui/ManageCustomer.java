@@ -20,10 +20,10 @@ public class ManageCustomer {
     private String custType;
     private final String[] corCustAtt={"ID: ","Contract Name: ","Phone: ","Address: ","Credit Limit: "};
     public ManageCustomer(){
-       
+       CC.initialized();
     }
     public void startManage(){
-        CC.initialized();
+        
         functionMenu(); 
     }
      

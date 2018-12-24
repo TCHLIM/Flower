@@ -24,8 +24,8 @@ public class CustomerControl {
         if(corCustDA.getValidation()==false){
             
             corCustDA.add(new CorCust("B0001","CHUEN BHD","01127011502","16,jln8/17,tmn fadason,kl","2000","EXISTING"));
-            corCustDA.add(new CorCust("B0002","DDDD BHD","01127011502","16,jln8/17,tmn fadason,kl","2000","EXISTING"));
-            corCustDA.add(new CorCust("B0003","????? BHD","01127011502","16,jln8/17,tmn fadason,kl","2000","EXISTING"));
+            corCustDA.add(new CorCust("B0002","DDDD BHD","01127011502","54,jln6/87,tmn uuuuuuuu,kl","2000","EXISTING"));
+            corCustDA.add(new CorCust("B0003","????? BHD","01127011502","56,jln9/27,tmn rwtyuwwq,kl","2000","EXISTING"));
         }
             
     }   
