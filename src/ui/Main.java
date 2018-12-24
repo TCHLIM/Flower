@@ -18,7 +18,11 @@ public class Main {
     public ListInterface<Flower> flowerList;
     public ListInterface<Promotion> promotionList;
     private Scanner scanner = new Scanner(System.in);        
-    
+    public Main(){
+        int i = 0;
+        initComponents(i);
+        runprogram();
+    }
     public static void main(String[] args) {
         int i = 0;
         Main newMain = new Main();

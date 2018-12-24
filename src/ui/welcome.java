@@ -23,7 +23,7 @@ public class welcome {
     private Main M;
     
     public welcome(){
-        MO = new FlowerAssignment();M = new Main();
+        MO = new FlowerAssignment();
         MC= new ManageCustomer();ManageInvoice MI = new ManageInvoice();IC = new InvoiceItemControl();
         System.out.println("+--------------------------------------------------------+");
         System.out.println("***************Welcome to Fiore Flower Shop***************");
@@ -37,7 +37,7 @@ public class welcome {
             switch(userReply){
                 case "0": exit(0);break;
                 case "1": MO.mainMenu();break;
-                case "2": Mbreak;
+                case "2": M=new Main();break;
                 case "3": MC.startManage();break;
                 case "4": MI.startInvoice(MC.getAllCorCust(),IC.getAll());break;
                 default: System.out.println("Only enter number between '0' to '4");break;

@@ -531,10 +531,6 @@ public class FlowerAssignment {
         }
     }
 
-    public static void main(String[] args) {
-        FlowerAssignment assignment = new FlowerAssignment();
-        assignment.mainMenu();
-
-    }
+    
 
 }
