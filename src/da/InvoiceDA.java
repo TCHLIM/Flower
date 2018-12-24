@@ -23,22 +23,9 @@ public class InvoiceDA {
     private ListInterface<Invoice> invoiceList = new List<>();
     private boolean validation=true;
     private Date currentMonth,invoiceDueDate;
-    private ArrayList<InvoiceItem> invoiceItemList;
+    private ListInterface<InvoiceItem> invoiceItemList;
     
     public InvoiceDA(){
-        invoiceDueDate.setDate(7);
-        //data 1
-        currentMonth.setMonth(0);invoiceDueDate.setMonth(currentMonth.getMonth()+1);
-        invoiceItemList.add(new InvoiceItem("I0001","Blue Rose","",new SimpleDateFormat("2018/1/2"),10,105));
-        invoiceItemList.add(new InvoiceItem("I0002","White Rose","",new SimpleDateFormat("2018/1/14"),10,100));
-        invoiceItemList.add(new InvoiceItem("I0003","Red Rose","",new SimpleDateFormat("2018/1/26"),5,52.5));
-        invoiceList.add(new Invoice("V0001","PAID",currentMonth,invoiceDueDate,"B0001",invoiceItemList));
-        //data 2
-        currentMonth.setMonth(0);invoiceDueDate.setMonth(currentMonth.getMonth()+1);
-        invoiceItemList.add(new InvoiceItem("I0001","Yellow Rose","",new SimpleDateFormat("2018/5/2"),10,100));
-        invoiceItemList.add(new InvoiceItem("I0002","Blue Rose","",new SimpleDateFormat("2018/5/14"),10,105));
-        invoiceItemList.add(new InvoiceItem("I0003","Blue Rose","",new SimpleDateFormat("2018/5/26"),5,52.5));
-        invoiceList.add(new Invoice("V0002","PAID",currentMonth,invoiceDueDate,"B0002",invoiceItemList));
         
     }
     public void add(Invoice inv){
@@ -46,18 +33,18 @@ public class InvoiceDA {
     }
     public Invoice search(String ID){
         int countPlace=0;
-        while(countPlace<invoiceList.getNumberOfEntries()){
+        while(countPlace<invoiceList.size()){
             invoice=invoiceList.getEntry(countPlace);
             if(invoice.getInvoiceID().equals(ID)){
                 validation=true;
-                countPlace=invoiceList.getNumberOfEntries();
+                countPlace=invoiceList.size();
             }else{validation = false;}
         }
         return invoice;
     }
     public void update(Invoice inv){
         int countPlace=0;
-        while(countPlace<invoiceList.getNumberOfEntries()){
+        while(countPlace<invoiceList.size()){
             invoice=invoiceList.getEntry(countPlace);
             if(invoice.getInvoiceID().equals(inv.getInvoiceID())){
                 invoiceList.replace(countPlace, inv);

@@ -4,53 +4,48 @@
  * and open the template in the editor.
  */
 package control;
-import ADT.ListInterface;
-import java.util.*;
-import domain.*;
-import ui.*;
 
-import da.*;
+import ADT.ListInterface;
+import da.InvoiceItemDA;
+import domain.Invoice;
+import domain.InvoiceItem;
+
 /**
  *
- * @author jiachuen
+ * @author jiach
  */
-public class InvoiceControl {
-    Invoice invoice = new Invoice();
-    CorCust corCust=new CorCust();
-    InvoiceDA invoiceDA = new InvoiceDA();
-    //private boolean checkCust;
-    public InvoiceControl(){
-        
+public class InvoiceItemControl {
+    InvoiceItemDA itemDA = new InvoiceItemDA();
+    InvoiceItem item = new InvoiceItem();
+    
+    public InvoiceItemControl(){
+        itemDA = new InvoiceItemDA();
     }
-    public ListInterface<Invoice> getAll(){
-        return invoiceDA.getAll();
+    
+    public ListInterface<InvoiceItem> getAll(){
+        return itemDA.getAll();
     }
-    public void initialized(){
-        
-    }
+    
     
     public void addInvoice(Invoice inv){
-        invoiceDA.add(inv);
+        itemDA.add(item);
     }
-    public Invoice searchInvoice(String ID){
-        return invoiceDA.search(ID);
+    public InvoiceItem searchInvoice(String ID){
+        return itemDA.search(ID);
     }
     public void updateInvoice(Invoice inv){
-        invoiceDA.update(inv);
+        itemDA.update(item);
     }
     
-    
-
-    
     public String AutoIDGenerator(){
-        String invID="";
+        String itemID="";
         String lastID;
         int IDArray[] = new int[4];        
-        lastID=invoiceDA.getLastID();
-        if(invoiceDA.getValidation()==false){
-            invID="V0001";
+        lastID=itemDA.getLastID();
+        if(itemDA.getValidation()==false){
+            itemID="I0001";
         }else{
-            invID= "V";
+            itemID= "I";
             int j=0;
             for(int i =1;i<lastID.length();i++){
                 IDArray[j]=lastID.charAt(i)-48;j++;
@@ -61,18 +56,9 @@ public class InvoiceControl {
                         else{if(IDArray[0]<9){IDArray[0]+=1;IDArray[1]=0;IDArray[2]=0;IDArray[3]=0;}
                 }}}
             for(int i=0;i<4;i++){
-                invID+=String.valueOf(IDArray[i]);
+                itemID+=String.valueOf(IDArray[i]);
             }//end for         
         }//end if
-        return invID;
+        return itemID;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

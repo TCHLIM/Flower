@@ -7,6 +7,7 @@ package domain;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -18,26 +19,27 @@ public class InvoiceItem {
     private String itemType;
     private int itemQty;
     private double itemPrice;
-    private DateFormat dateAdded = new SimpleDateFormat("dd/MM/yyyy");
+    private Date dateAdded;
+    private String custID;
     
     public InvoiceItem(){
     
     }
     
-    public InvoiceItem(String itemID,String itemName,String itemType,DateFormat dateAdded,int itemQty,double itemPrice){
+    public InvoiceItem(String itemID,String itemName,String itemType,Date dateAdded,int itemQty,double itemPrice,String custID){
         this.itemID=itemID;
         this.itemName=itemName;
         this.itemType=itemType;
-            this.dateAdded=dateAdded;
+        this.dateAdded=dateAdded;
         this.itemPrice=itemQty;
         this.itemPrice=itemPrice;
     }
 
-    public void setDateAdded(DateFormat dateAdded) {
+    public void setDateAdded(Date dateAdded) {
         this.dateAdded = dateAdded;
     }
 
-    public DateFormat getDateAdded() {
+    public Date getDateAdded() {
         return dateAdded;
     }
 

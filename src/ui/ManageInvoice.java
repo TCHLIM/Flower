@@ -5,10 +5,12 @@
  */
 package ui;
 
+import ADT.List;
 import ADT.ListInterface;
 import control.InvoiceControl;
 import domain.CorCust;
-import domain.Invoice;
+//import domain.Invoice;
+import domain.InvoiceItem;
 import domain.Order;
 import java.time.LocalDate;
 import java.util.Date;
@@ -20,7 +22,7 @@ import java.util.Scanner;
  * @author jiach
  */
 public class ManageInvoice {
-    Invoice invoice;
+    InvoiceItem item;
     InvoiceControl invControl = new InvoiceControl();
     LocalDate todayDate;
     Scanner myScanner = new Scanner(System.in);
@@ -30,19 +32,28 @@ public class ManageInvoice {
         
     }
     
-    public void startInvoice(ListInterface<CorCust> corCustList,ListInterface<Order> orderList){
+    public void startInvoice(ListInterface<CorCust> corCustList,ListInterface<InvoiceItem> itemList){
         corCust = checkCustomer(corCustList);
         Date date=selectDate();
-        Order order=checkOrder(orderList);
-        if(corCust!=null&&date!=null){
-            DisplayInvoice(corCust,invoice,order,date);
-        }
+        ListInterface<InvoiceItem> filteredList =getItems(itemList,corCust.getCustID(),date);
+        if(corCust!=null&&date!=null&&filteredList.isEmpty()){
+            DisplayInvoice(corCust,filteredList,date);
+        }else System.out.println("No such record!!!");
         
     }
-    public Invoice checkInvoice(){
-        invoice = new Invoice();
-        
-        return invoice;
+    
+    public ListInterface<InvoiceItem> getItems(ListInterface<InvoiceItem> itemList,String custID,Date date){
+        boolean validation;int countPlace=0;ListInterface<InvoiceItem>returnList=new List<>();
+        while(countPlace<itemList.size()){
+            item = itemList.getEntry(countPlace);
+            if(custID.equals(item.getItemID())){
+                if(item.getDateAdded().getMonth()==date.getMonth()){
+                    if(item.getDateAdded().getYear()==date.getYear()){returnList.add(item);}//end if
+                }//end if
+            }//end if
+            countPlace++;
+        }
+        return returnList;
     }
     
     public CorCust checkCustomer(ListInterface<CorCust> corCustList){
@@ -51,7 +62,7 @@ public class ManageInvoice {
             System.out.println("Enter the corporate customer id, '0' to cancel");
                 custID=myScanner.next();int countPlace=0;
             if(custID!="0"){
-                while(countPlace<corCustList.getNumberOfEntries()&&validation==false){
+                while(countPlace<corCustList.size()&&validation==false){
                     corCust=corCustList.getEntry(countPlace);
                     if(corCust.getCustID().equals(custID)){validation=true;}
                 }//end nested while
@@ -100,33 +111,26 @@ public class ManageInvoice {
         }//end while
         return selectedDate;
     }
-    public Order checkOrder(ListInterface<Order> orderList){
-        Order order;
-        return order;
-    }
    
     
-    public void DisplayInvoice(CorCust corCust,Invoice invoice,Order order,Date date){
+    public void DisplayInvoice(CorCust corCust,ListInterface<InvoiceItem> itemList,Date date){
         
         System.out.println("#####################################################################################");
         System.out.println("Fiore Flower Shop"+"                    INVOICE"+"");
         System.out.println("                                   INVOICE# | MONTH");
-        System.out.println("                                    "+invoice.getInvoiceID()+"|"+month+" "+year);
+        System.out.println("                                   "+"V0001"+"| "+date.getMonth()+"/"+date.getYear());
         System.out.println("BILL TO\n"+ corCust.getContractName()+"\n"+corCust.getCustPhone() );
         System.out.println("--------------------------------------------------------------------------------");
         System.out.println("NO  Item                         QTY       Amount");
         
-        int totalPrice=0;
-        while(countPlace<orderList.getNumberOfEntries()){
-            order=orderList.get(countPlace);
-            for (String orderID : invoice.getOrderID()) {
-                if (order.getOrderId().equals(orderID)) {
-                    totalPrice+=order.getOrderPrice();
-                System.out.println(countPlace+1+"  "+order.getOrderId()+" "+order.getOrderName()+"                "
-                        +order.getOrderQuantity()+"          "+order.getOrderPrice());
-                }//end if
-            }//end for
-            countPlace++;
+        int totalPrice=0,countPlace=0;
+        while(countPlace<itemList.size()){
+            item=itemList.getEntry(countPlace);
+                    totalPrice+=item.getItemPrice();
+                System.out.println(countPlace+1+"  "+item.getItemName()+"                "
+                        +item.getItemQty()+"          "+item.getItemPrice());
+
+                countPlace++;
         }//end while
         System.out.println("--------------------------------------------------------------------------------");        
         System.out.println("                                    TOTAL RM"+totalPrice);

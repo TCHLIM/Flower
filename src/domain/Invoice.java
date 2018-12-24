@@ -1,45 +1,40 @@
-/*
+
      * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ 
 package domain;
 
-import java.util.ArrayList;
+import ADT.List;
+import ADT.ListInterface;
 import java.util.Date;
 
-/**
- *
- * @author jiachuen
- */
 public class Invoice {
     private String invoiceID;
     private String invoiceStatus;
     private Date currentMonth;
     private Date invoiceDueDate;
     private String corCustID;
-    private String orderID[];
-    private ArrayList<InvoiceItem> itemID = new ArrayList<>();
+    private ListInterface<InvoiceItem> itemList = new List<>();
     
     public Invoice(){
         
     }
-    public Invoice(String invoiceID, String invoiceStatus,Date currentMonth,Date invoiceDueDate,String corCustID,ArrayList<InvoiceItem> itemID){
+    public Invoice(String invoiceID, String invoiceStatus,Date currentMonth,Date invoiceDueDate,String corCustID,ListInterface<InvoiceItem> itemList){
         this.invoiceID=invoiceID;
         this.invoiceStatus=invoiceStatus;
         this.invoiceDueDate=invoiceDueDate;
         this.corCustID=corCustID;
-        this.orderID=orderID;
         this.currentMonth = currentMonth;
-        this.itemID=itemID;
+        this.itemList=itemList;
     }
 
-    public ArrayList<InvoiceItem> getItemID() {
-        return itemID;
+    public ListInterface<InvoiceItem> getItemID() {
+        return itemList;
     }
 
-    public void setItemID(ArrayList<InvoiceItem> itemID) {
-        this.itemID = itemID;
+    public void setItemID(ListInterface<InvoiceItem> itemID) {
+        this.itemList = itemID;
     }
 
   
@@ -75,9 +70,6 @@ public class Invoice {
         return corCustID;
     }
 
-    public String getOrderID()[] {
-        return orderID;
-    }
 
     public void setInvoiceID(String invoiceID) {
         this.invoiceID = invoiceID;
@@ -86,14 +78,6 @@ public class Invoice {
     public void setCorCustID(String corCustID) {
         this.corCustID = corCustID;
     }
-
-    public void setOrderID(String orderID[]) {
-        this.orderID = orderID;
-    }
-    
-    
-
-
 
 
 

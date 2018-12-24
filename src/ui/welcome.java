@@ -5,6 +5,7 @@
  */
 package ui;
 
+import control.InvoiceItemControl;
 import static java.lang.System.exit;
 import java.util.Scanner;
 
@@ -18,6 +19,7 @@ public class welcome {
     private ManageCustomer MC = new ManageCustomer();
     private FlowerAssignment MO = new FlowerAssignment();
     private ManageInvoice MI = new ManageInvoice();
+    private InvoiceItemControl IC = new InvoiceItemControl();
     
     public welcome(){
         System.out.println("+--------------------------------------------------------+");
@@ -33,7 +35,7 @@ public class welcome {
                 case "1": break;
                 case "2": break;
                 case "3": MC.startManage();break;
-                case "4": MI.startInvoice(MC.getAllCorCust(), orderList);break;
+                case "4": MI.startInvoice(MC.getAllCorCust(),IC.getAll());break;
                 default: System.out.println("Only enter number between '0' to '4");validation=false;break;
             }
         }while(validation==false);
