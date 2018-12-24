@@ -31,12 +31,21 @@ public class InvoiceItem {
         this.itemName=itemName;
         this.itemType=itemType;
         this.dateAdded=dateAdded;
-        this.itemPrice=itemQty;
+        this.itemQty=itemQty;
         this.itemPrice=itemPrice;
+        this.custID=custID;
     }
 
     public void setDateAdded(Date dateAdded) {
         this.dateAdded = dateAdded;
+    }
+
+    public void setCustID(String custID) {
+        this.custID = custID;
+    }
+
+    public String getCustID() {
+        return custID;
     }
 
     public Date getDateAdded() {

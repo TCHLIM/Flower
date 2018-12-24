@@ -17,17 +17,17 @@ public class InvoiceItemDA {
     private ListInterface<InvoiceItem> itemList= new List<>();
     private InvoiceItem item = new InvoiceItem();
     private boolean validation=true;Date date = new Date();
-//InvoiceItem(String itemID,String itemName,String itemType,Date dateAdded,int itemQty,double itemPrice,String custID)
+
     public InvoiceItemDA() {
         if(itemList.isEmpty()){
             //data 1
             
-            date.setMonth(4-1);date.setYear(2016-1900);date.setDate(20);
+            date.setMonth(4);date.setYear(2016);date.setDate(20);
             itemList.add(new InvoiceItem("I0001","Blue Rose","",date,10,105,"B0001"));
             itemList.add(new InvoiceItem("I0002","White Rose","",date,10,100,"B0001"));
             itemList.add(new InvoiceItem("I0003","Red Rose","",date,5,52.5,"B0001"));
             //data 2
-            date.setMonth(4-1);date.setYear(2016-1900);date.setDate(20);
+            date.setMonth(4);date.setYear(2016);date.setDate(20);
             itemList.add(new InvoiceItem("I0004","Yellow Rose","",date,10,100,"B0002"));
             itemList.add(new InvoiceItem("I0005","Blue Rose","",date,10,105,"B0002"));
             itemList.add(new InvoiceItem("I0006","Blue Rose","",date,5,52.5,"B0002"));

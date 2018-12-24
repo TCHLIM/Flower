@@ -51,7 +51,7 @@ public class ManageCustomer {
         System.out.println("##############################################################");
 
         switch(userSelection){
-            case "0" : exit(0);break;
+            case "0" : break;
             
             case "1" : addCorCust();
                 break;

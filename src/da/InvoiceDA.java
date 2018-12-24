@@ -49,7 +49,7 @@ public class InvoiceDA {
             if(invoice.getInvoiceID().equals(inv.getInvoiceID())){
                 invoiceList.replace(countPlace, inv);
                 validation=true;
-                countPlace=invoiceList.getNumberOfEntries();
+                countPlace=invoiceList.size();
             }else{validation = false;}
         }
     }
@@ -65,7 +65,7 @@ public class InvoiceDA {
         String custID="";
         validation=true;
         if(!invoiceList.isEmpty()){
-           custID= invoiceList.getEntry(invoiceList.getNumberOfEntries()-1).getInvoiceID() ;
+           custID= invoiceList.getEntry(invoiceList.size()-1).getInvoiceID() ;
         }else{validation=false;}
         
         return custID;

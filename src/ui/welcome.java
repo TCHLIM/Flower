@@ -16,31 +16,35 @@ import java.util.Scanner;
 public class welcome {
     private Scanner myScanner = new Scanner(System.in);
     private boolean validation;
-    private ManageCustomer MC = new ManageCustomer();
-    private FlowerAssignment MO = new FlowerAssignment();
-    private ManageInvoice MI = new ManageInvoice();
-    private InvoiceItemControl IC = new InvoiceItemControl();
+    private ManageCustomer MC ;
+    private FlowerAssignment MO;
+    private ManageInvoice MI;
+    private InvoiceItemControl IC;
+    private Main M;
     
     public welcome(){
+        MO = new FlowerAssignment();M = new Main();
+        MC= new ManageCustomer();ManageInvoice MI = new ManageInvoice();IC = new InvoiceItemControl();
         System.out.println("+--------------------------------------------------------+");
         System.out.println("***************Welcome to Fiore Flower Shop***************");
         System.out.println("+--------------------------------------------------------+");
-        System.out.println("Please Select which function u want to proceed");
-        System.out.println("0 - exit\n1 - Manage Order\n2 - Manage Flower\n3 - Manage Customer\n4 - Generate Invoice ");
-        String userReply=myScanner.next();
+        String userReply;
         do{
-            validation=true;
+            System.out.println("Function:\n0 - exit\n1 - Manage Order\n2 - Manage Flower\n3 - Manage Customer\n4 - Generate Invoice ");
+            System.out.println("Please Select which function u want to proceed");
+            userReply=myScanner.next();
+            validation=false;
             switch(userReply){
                 case "0": exit(0);break;
-                case "1": break;
-                case "2": break;
+                case "1": MO.mainMenu();break;
+                case "2": Mbreak;
                 case "3": MC.startManage();break;
                 case "4": MI.startInvoice(MC.getAllCorCust(),IC.getAll());break;
-                default: System.out.println("Only enter number between '0' to '4");validation=false;break;
+                default: System.out.println("Only enter number between '0' to '4");break;
             }
         }while(validation==false);
             
-        System.out.println("");
+        //System.out.println("WAFFAAGAGAGAGGAGA");
     }
     public static void main(String[] args){
         new welcome();

@@ -59,7 +59,7 @@ public class List<T> implements ListInterface<T> {
                 result = firstNode.getData();     // save entry to be removed 
                 firstNode = firstNode.getNext();
             } else {                         // case 2: givenPosition > 1
-                Node<T> nodeBefore = getNodeAt(givenPosition - 1);
+                Node<T> nodeBefore = getNodeAt(givenPosition - 2);
                 Node<T> nodeToRemove = nodeBefore.getNext();
                 Node<T> nodeAfter = nodeToRemove.getNext();
                 nodeBefore.setNext(nodeAfter); // disconnect the node to be removed

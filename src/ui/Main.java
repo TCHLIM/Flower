@@ -37,7 +37,7 @@ public class Main {
     flowerList.add(new Flower("Black rose", "Black color", 0, true,"Graduation",10.00));
     
     promotionList = new List<>();
-    promotionList.add(new Promotion("Buy 10 Above ", "Buy Three Flower Discount 20%  ", 20.00, true));
+    promotionList.add(new Promotion("Buy 10 Above ", "Buy 10 Flower Discount 20%  ", 20.00, true));
     
     
     }

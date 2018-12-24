@@ -2,15 +2,15 @@ package domain;
 
 
 public class DeliveryDetails {
-    public String pickUpDate;
-    public String pickUpTime;
+    public String DeliveryDate;
+    public String DeliveryTime;
     public String address;
     public String flowerName;
     public int flowerQuantity;
     
-    public DeliveryDetails(String pickUpDate, String pickUpTime, String address){
-        this.pickUpDate = pickUpDate;
-        this.pickUpTime = pickUpTime;
+    public DeliveryDetails(String DeliveryDate, String DeliveryTime, String address){
+        this.DeliveryDate = DeliveryDate;
+        this.DeliveryTime = DeliveryTime;
         this.address = address;
         
     }
@@ -33,36 +33,40 @@ public class DeliveryDetails {
         return flowerName;
     }
 
+    public void setDeliveryDate(String DeliveryDate) {
+        this.DeliveryDate = DeliveryDate;
+    }
+
+    public void setDeliveryTime(String DeliveryTime) {
+        this.DeliveryTime = DeliveryTime;
+    }
+
+    public String getDeliveryDate() {
+        return DeliveryDate;
+    }
+
+    public String getDeliveryTime() {
+        return DeliveryTime;
+    }
+
     public int getFlowerQuantity() {
         return flowerQuantity;
     }
 
     @Override
     public String toString() {
-        return "DeliveryDetails{" + "pickUpDate=" + pickUpDate + ", pickUpTime=" + pickUpTime + ", address=" + address + ", flowerName=" + flowerName + ", flowerQuantity=" + flowerQuantity + '}';
+        return "DeliveryDetails{" + "DeliveryDate=" + DeliveryDate + ", DeliveryTime=" + DeliveryTime + ", address=" + address + ", flowerName=" + flowerName + ", flowerQuantity=" + flowerQuantity + '}';
     }
 
    
 
-    public void setPickUpDate(String pickUpDate) {
-        this.pickUpDate = pickUpDate;
-    }
-
-    public void setPickUpTime(String pickUpTime) {
-        this.pickUpTime = pickUpTime;
-    }
+    
 
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public String getPickUpDate() {
-        return pickUpDate;
-    }
-
-    public String getPickUpTime() {
-        return pickUpTime;
-    }
+    
 
     public String getAddress() {
         return address;
