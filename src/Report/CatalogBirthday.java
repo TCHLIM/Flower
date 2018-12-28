@@ -11,6 +11,7 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
+import ui.ManageOrder;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Font;
 import domain.MadePayment;
@@ -121,9 +122,12 @@ public class CatalogBirthday {
             d.add(pt);
             d.close();
             System.out.print("\nPDF report printed out\n");
-
+            ManageOrder flowerAssignment = new ManageOrder();
+            flowerAssignment.mainMenu();
         } catch (Exception ex) {
             System.out.print("\nError printing out PDF\n");
+            ManageOrder flowerAssignment = new ManageOrder();
+            flowerAssignment.mainMenu();
         }
 
     }

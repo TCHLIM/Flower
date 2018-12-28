@@ -17,14 +17,14 @@ public class welcome {
     private Scanner myScanner = new Scanner(System.in);
     private boolean validation;
     private ManageCustomer MC ;
-    private FlowerAssignment MO;
+    private ManageOrder MO;
     private ManageInvoice MI;
     private InvoiceItemControl IC;
     private Main M;
     
     public welcome(){
-        MO = new FlowerAssignment();
-        MC= new ManageCustomer();ManageInvoice MI = new ManageInvoice();IC = new InvoiceItemControl();
+        MO = new ManageOrder();M=new Main();
+        MC= new ManageCustomer();MI = new ManageInvoice();IC = new InvoiceItemControl();
         System.out.println("+--------------------------------------------------------+");
         System.out.println("***************Welcome to Fiore Flower Shop***************");
         System.out.println("+--------------------------------------------------------+");
@@ -37,7 +37,7 @@ public class welcome {
             switch(userReply){
                 case "0": exit(0);break;
                 case "1": MO.mainMenu();break;
-                case "2": M=new Main();break;
+                case "2": M.giveAccess();break;
                 case "3": MC.startManage();break;
                 case "4": MI.startInvoice(MC.getAllCorCust(),IC.getAll());break;
                 default: System.out.println("Only enter number between '0' to '4");break;

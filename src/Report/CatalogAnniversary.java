@@ -14,6 +14,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Font;
 import domain.MadePayment;
+import ui.ManageOrder;
 import java.io.FileOutputStream;
 import java.sql.*;
 import java.sql.ResultSet;
@@ -122,9 +123,13 @@ public class CatalogAnniversary {
             d.add(pt);
             d.close();
             System.out.print("\nPDF report printed out\n");
+            ManageOrder flowerAssignment = new ManageOrder();
+            flowerAssignment.mainMenu();
 
         } catch (Exception ex) {
             System.out.print("\nError printing out PDF\n");
+            ManageOrder flowerAssignment = new ManageOrder();
+            flowerAssignment.mainMenu();
         }
 
     }

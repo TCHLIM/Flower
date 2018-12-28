@@ -21,14 +21,12 @@ public class Main {
     public Main(){
         int i = 0;
         initComponents(i);
+        //runprogram();
+    }
+    public void giveAccess(){
         runprogram();
     }
-    public static void main(String[] args) {
-        int i = 0;
-        Main newMain = new Main();
-        newMain.initComponents(i);
-        newMain.runprogram();
-    }
+    
     
     public int initComponents(int i){
     if(i == 0){

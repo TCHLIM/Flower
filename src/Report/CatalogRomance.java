@@ -16,7 +16,7 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
-
+import ui.ManageOrder;
 
 public class CatalogRomance {
     
@@ -115,9 +115,12 @@ public class CatalogRomance {
             d.add(pt);
             d.close();
             System.out.print("\nPDF report printed out\n");
-
+            ManageOrder flowerAssignment = new ManageOrder();
+            flowerAssignment.mainMenu();
         } catch (Exception ex) {
             System.out.print("\nError printing out PDF\n");
+            ManageOrder flowerAssignment = new ManageOrder();
+            flowerAssignment.mainMenu();
         }
 
     }

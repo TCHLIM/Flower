@@ -40,7 +40,7 @@ public class ManageInvoice {
                 filteredList =getItems(itemList,corCust.getCustID(),date);
                 if(!filteredList.isEmpty()){//if 3
                     DisplayInvoice(corCust,filteredList,date);
-                }else System.out.println("No such record!!!");//end if 3
+                }else System.out.println("******************\n No such record!!!\n******************");//end if 3
             }//end if 2
         }//end if 1
     }
@@ -117,20 +117,19 @@ public class ManageInvoice {
     public void DisplayInvoice(CorCust corCust,ListInterface<InvoiceItem> itemList,Date date){
         
         System.out.println("#####################################################################################");
-        System.out.println("Fiore Flower Shop"+"                    INVOICE"+"");
-        System.out.println("                                   INVOICE# | MONTH");
-        System.out.println("                                   "+"V0001"+"| "+date.getMonth()+"/"+date.getYear());
-        System.out.println("BILL TO\n"+ corCust.getContractName()+"\n"+corCust.getCustPhone() );
+        System.out.printf("%-20s%-40s%-10s\n","Fiore Flower Shop","","INVOICE");
+        System.out.printf("%55s%-15s\n","","INVOICE# | MONTH");
+        System.out.printf("%58s%6s%-1s%-5s%-1s%-5s\n","","V0001","|",date.getMonth(),"/",date.getYear());
+        System.out.println("BILL TO\n"+corCust.getContractName()+"\n"+corCust.getCustPhone() );
         System.out.println("--------------------------------------------------------------------------------");
-        System.out.println("NO  Item                         QTY       Amount");
+        System.out.printf("%-4s%-50s%-10s%-10s\n","NO","Item","QTY","Amount(RM)");
         
         double totalPrice=0;int countPlace=0;
         while(countPlace<itemList.size()){
             item=itemList.getEntry(countPlace);
             totalPrice+=item.getItemPrice();
-            System.out.println(countPlace+1+"  "+item.getItemName()+"                "
-                    +item.getItemQty()+"          "+item.getItemPrice());
-
+            System.out.printf("%-4s%-50s%-10s%-10s\n",countPlace+1,item.getItemName(),item.getItemQty(),item.getItemPrice());
+            
             countPlace++;
         }//end while
         System.out.println("--------------------------------------------------------------------------------");        

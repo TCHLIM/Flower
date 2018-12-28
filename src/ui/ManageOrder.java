@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class FlowerAssignment {
+public class ManageOrder {
 
     private static Scanner in = new Scanner(System.in);
     private ListInterface<MadePayment> MPList = new List<>();
@@ -149,6 +149,7 @@ public class FlowerAssignment {
                     date, time,
                     DeliveryList.getEntry(n).getAddress(), inputName);
             System.out.print("\n");
+            mainMenu();
         }
 
     }
